@@ -2,16 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="../css/bootstrap.css">
     <title>로그인 페이지</title>
 </head>
 <body>
     로그인 페이지입니다.
-    <form action = "/login" name = "login_info" method = "post">
+    <form action = "/main/login" id = "login_info" method = "post">
         id : <input type = "text" name="id"><br>
         password  : <input type = "text" name="password"><br>
         <input type="submit" value = "로그인">
         <input type="reset" value = "초기화">
-        <button id = "register">회원가입</button>
     </form>
+    <button type ="button" id = "register" onClick="location.href='/main/register'">회원가입</button>
 </body>
 </html>
