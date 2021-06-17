@@ -23,6 +23,12 @@ public class LoginController {
                         @RequestParam("password") String password){
         logger.info("login!!");
         logger.info("id:"+id+"    password:"+password);
+
+
+
+
+
+
         return "redirect:/html/board/boardList.html";
         //redirect 안붙이면 405에러...왜일까....
     }
