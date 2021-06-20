@@ -24,10 +24,11 @@ public class LoginController {
         logger.info("login!!");
         logger.info("id:"+id+"    password:"+password);
 
+        String validId = "";
 
-
-
-
+        if(!id.equals(id)){
+            logger.info("등록 되지 않은 회원입니다.");
+        }
 
         return "redirect:/html/board/boardList.html";
         //redirect 안붙이면 405에러...왜일까....
