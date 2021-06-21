@@ -20,12 +20,6 @@ public class MemberRepository {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    /*
-    @Autowired
-    public MemberRepository(DataSource datasource) {
-        jdbcTemplate = new JdbcTemplate(datasource);
-    }*/
-
     RowMapper<Member> memberRowMapper = new RowMapper<Member>() {
         @Override
         public Member mapRow(ResultSet rs, int rowNum) throws SQLException {
