@@ -37,8 +37,6 @@ public class MemberRepository {
             return member;
         }
     };
-
-
     //회원모두 불러오기
     public List<Member> findByAll(){
         List<Member> member = jdbcTemplate.query("select * from member",memberRowMapper);
@@ -47,8 +45,24 @@ public class MemberRepository {
         }else{
             logger.info(Integer.toString(member.size())+"  member 가 있어요~");
         }
-
-
         return member;
+    }
+    //특정회원 찾기
+    public List<Member> findById(String id){
+        List<Member> member = jdbcTemplate.query("select * from member where id = ?",memberRowMapper,id);
+        logger.info(member.toString());
+        return member;
+    }
+
+    //회원가입
+    public String register(String id,String username,String password){
+        String sql = "INSERT INTO MEMBER VALUES(?, ?, ?)";
+        try {
+            jdbcTemplate.update(sql, id, username, password);
+            return "success";
+        }catch(Exception e){
+            e.printStackTrace();
+            return "failed";
+        }
     }
 }

@@ -35,26 +35,40 @@ public class LoginController {
 
         String validId = "";
 
-        List<Member> memberList = memberRepository.findByAll();
-
+//      List<Member> memberList = memberRepository.findByAll();
+        List<Member> members = memberRepository.findById(id);
         //멤버출력
-        for(Member member : memberList){
-            logger.info(member.getId());
-        }
-
-        if(!id.equals(id)){
+        if(members.size()==0){
             logger.info("등록 되지 않은 회원입니다.");
+            return "redirect:/html/main/login.html";
+        }
+        for(Member member : members){
+            logger.info("id :: " +member.getId());
         }
 
         return "redirect:/html/board/boardList.html";
         //redirect 안붙이면 405에러...왜일까....
     }
 
-    //회원가입 수행
+    //회원가입 페이지 이동
     @GetMapping("/register")
-    public String register(){
-        logger.info("register!!");
+    public String registerForm(){
+        logger.info("register Form!!");
         return "/html/main/registerForm.html";
     }
 
+    //회원가입 수행
+    @PostMapping("/register")
+    public String register(@RequestParam("id") String id,
+                           @RequestParam("username") String username,
+                           @RequestParam("password") String password){
+        logger.info("register!!");
+        String result = memberRepository.register(id,username,password);
+        if(result == "success"){
+            logger.info("회원가입 성공");
+        }else{
+            logger.info("회원가입 실패");
+        }
+        return "redirect:/html/main/login.html";
+    }
 }
