@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -29,9 +30,18 @@ public class BoardController {
 
     //게시글 등록 이동
     @GetMapping("/register")
-    public String registerForm(){
+    public String registerForm(@RequestParam("title") String title,
+                               @RequestParam("content") String content){
         logger.info("board register Form!!");
-        return "/html/board/boardForm.html";
+
+        String result = boardRepository.register("","","","");
+        if(result.equals("success")){
+            logger.info("게시글 등록성공");
+        }else{
+            logger.info("등록 실패");
+            return "/html/board/boardForm.html";
+        }
+        return "/html/board/boardList.html";
     }
 
 }

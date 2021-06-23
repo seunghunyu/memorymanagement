@@ -49,4 +49,15 @@ public class BoardRepository {
         return board;
     }
 
+    //게시글 등록
+    public String register(String title,String content,String id,String username){
+        String sql = "INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL, ?, ?, ?, ?, TO_CHAR(SYSDATE,'YYYYMMDD')";
+        try {
+            jdbcTemplate.update(sql, title, content, id, username);
+            return "success";
+        }catch(Exception e){
+            e.printStackTrace();
+            return "failed";
+        }
+    }
 }
