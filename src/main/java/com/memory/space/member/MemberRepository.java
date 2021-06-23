@@ -33,7 +33,7 @@ public class MemberRepository {
     };
     //회원모두 불러오기
     public List<Member> findByAll(){
-        List<Member> member = jdbcTemplate.query("select * from member",memberRowMapper);
+        List<Member> member = jdbcTemplate.query("SELECT * FROM MEMBER",memberRowMapper);
         if(member.size()==0){
             logger.info("member 가 없어요~");
         }else{
@@ -43,7 +43,7 @@ public class MemberRepository {
     }
     //특정회원 찾기
     public List<Member> findById(String id){
-        List<Member> member = jdbcTemplate.query("select * from member where id = ?",memberRowMapper,id);
+        List<Member> member = jdbcTemplate.query("SELECT * FROM MEMBER WHERE ID = ?",memberRowMapper,id);
         logger.info(member.toString());
         return member;
     }

@@ -15,7 +15,7 @@ import java.util.List;
 
 @Repository
 @Transactional
-public class BoardReposiotry {
+public class BoardRepository {
     Logger logger = LoggerFactory.getLogger(this.getClass());
     @Autowired
     private JdbcTemplate jdbcTemplate;
@@ -35,7 +35,7 @@ public class BoardReposiotry {
 
             board.setSeq(rs.getLong("seq"));
             board.setTitle(rs.getString("title"));
-            board.setDesc(rs.getString("desc"));
+            board.setContent(rs.getString("content"));
             board.setId(rs.getString("id"));
             board.setUsername(rs.getString("username"));
             board.setUpdateDate(rs.getString("updateDate"));
@@ -43,10 +43,10 @@ public class BoardReposiotry {
             return board;
         }
     };
-    //회원모두 불러오기
+    //게시글모두 불러오기
     public List<Board> findByAll(){
-        List<Board> board = jdbcTemplate.query("select * from board",boardRowMapper);
-
+        List<Board> board = jdbcTemplate.query("SELECT * FROM BOARD ORDER BY SEQ DESC",boardRowMapper);
         return board;
     }
+
 }
