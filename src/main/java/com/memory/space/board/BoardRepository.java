@@ -48,10 +48,15 @@ public class BoardRepository {
         List<Board> board = jdbcTemplate.query("SELECT * FROM BOARD ORDER BY SEQ DESC",boardRowMapper);
         return board;
     }
-
+    Long seq;
+    String title;
+    String content;
+    String id;
+    String username;
+    String updateDate;
     //게시글 등록
     public String register(String title,String content,String id,String username){
-        String sql = "INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL, ?, ?, ?, ?, TO_CHAR(SYSDATE,'YYYYMMDD')";
+        String sql = "INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL, ?, ?, ?, ?, TO_CHAR(SYSDATE,'YYYYMMDD'))";
         try {
             jdbcTemplate.update(sql, title, content, id, username);
             return "success";
