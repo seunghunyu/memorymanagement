@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th = "http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../css/bootstrap.css">
@@ -7,7 +7,27 @@
 </head>
 <body>
 게시판목록입니다.
-
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>번호</th>
+        <th>제목</th>
+        <th>설명</th>
+        <th>작성자</th>
+        <th>작성자명</th>
+        <th>수정일자</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="board : ${boardList}">
+        <td th:text="${board.seq}"></td>
+        <td th:text="${board.title}"></td>
+        <td th:text="${board.desc}"></td>
+        <td th:text="${board.username}"></td>
+        <td th:text="${board.updateDate}"></td>
+    </tr>
+    </tbody>
+</table>
 
 
 <button type ="button" id = "register" onClick="location.href='/board/registerForm'">게시글 작성</button>
