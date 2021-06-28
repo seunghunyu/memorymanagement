@@ -26,12 +26,16 @@ public class BoardController {
     public String main(Model model){
         logger.info("board main page");
         List<Board> boardList = boardRepository.findByAll();
-
+        /*
         if(boardList.size() > 0){
             model.addAttribute("boardList",boardList);
-        }
+            for(int i=0;i<boardList.size();i++){
+                logger.info(boardList.get(i).title);
+            }
+        }*/
+        model.addAttribute("boardList",boardList);
         logger.info(boardList.toString());
-        return "/html/board/boardList.html";
+        return "board/boardList";
     }
 
 

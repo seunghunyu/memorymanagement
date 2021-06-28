@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th = "http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/css/bootstrap.min.css}"
+          href="../css/bootstrap.min.css" rel="stylesheet">
+    <title>게시글 등록</title>
+</head>
+<body>
+    게시글 등록 페이지입니다.
+    <form action = "/board/register" name = "board_info" method = "post">
+        제목 : <input type = "text" name="title"><br>
+        내용 : <input type = "textarea" name="content"><br>
+        <input type="reset" value = "초기화">
+        <button id = "register">등록</button>
+    </form>`
+</body>
+</html>

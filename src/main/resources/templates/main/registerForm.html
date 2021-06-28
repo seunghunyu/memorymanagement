@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th = "http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/css/bootstrap.min.css}"
+          href="../css/bootstrap.min.css" rel="stylesheet">
+    <title>회원가입</title>
+</head>
+<body>
+       회원가입 페이지입니다.
+       <form action = "/main/register" name = "register_info" method = "post">
+           id : <input type = "text" name="id"><br>
+           이름 : <input type = "text" name="username"><br>
+           password  : <input type = "text" name="password"><br>
+           <input type="reset" value = "초기화">
+           <button id = "register">회원가입</button>
+       </form>
+</body>
+</html>

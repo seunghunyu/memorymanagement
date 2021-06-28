@@ -2,32 +2,31 @@ package com.memory.space.login;
 
 import com.memory.space.member.Member;
 import com.memory.space.member.MemberRepository;
+import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @Controller
-@RequestMapping("/main")
+@RequestMapping(value = "/main")
+@RequiredArgsConstructor
 public class LoginController {
     Logger logger = LoggerFactory.getLogger(this.getClass());
-
-    @Autowired
-    final MemberRepository memberRepository = new MemberRepository();
+    private final MemberRepository memberRepository;
 
     //main 로그인 화면 이동
     @GetMapping
     public String main(){
-        logger.info("main page");
-        return "/html/main/login.html";
+        logger.info("제발~~~~~~~main page");
+        return "main/login";
     }
 
     //로그인 기능 수행 -> 로그인 후 게시판이동
-    @PostMapping("/login")
+    @PostMapping("/logingo")
     public String login(@RequestParam("id") String id,
                         @RequestParam("password") String password){
         logger.info("login!!");
@@ -46,7 +45,7 @@ public class LoginController {
             logger.info("id :: " +member.getId());
         }
 
-        return "redirect:/html/board/boardList.html";
+        return "redirect:/board";
         //redirect 안붙이면 405에러...왜일까....
     }
 
