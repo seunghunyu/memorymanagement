@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th = "http://www.thymeleaf.org">
+<html xmlns:th = "http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <link th:href="@{/css/bootstrap.min.css}"
@@ -9,7 +9,7 @@
 <body>
     타임리프
     로그인 페이지입니다.
-    <form action = "/main/login" id = "login_info" method = "post">
+    <form action = "/main/loginGo" id = "login_info" method = "post">
         id : <input type = "text" name="id"><br>
         password  : <input type = "text" name="password"><br>
         <input type="submit" value = "로그인">

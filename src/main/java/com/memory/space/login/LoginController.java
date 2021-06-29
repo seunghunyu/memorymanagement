@@ -7,12 +7,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @Controller
-@RequestMapping(value = "/main")
+@RequestMapping("/main")
 @RequiredArgsConstructor
 public class LoginController {
     Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -20,13 +21,13 @@ public class LoginController {
 
     //main 로그인 화면 이동
     @GetMapping
-    public String main(){
+    public String goMain(){
         logger.info("제발~~~~~~~main page");
         return "main/login";
     }
 
     //로그인 기능 수행 -> 로그인 후 게시판이동
-    @PostMapping("/logingo")
+    @PostMapping("/loginGo")
     public String login(@RequestParam("id") String id,
                         @RequestParam("password") String password){
         logger.info("login!!");
@@ -39,7 +40,7 @@ public class LoginController {
         //멤버출력
         if(members.size()==0){
             logger.info("등록 되지 않은 회원입니다.");
-            return "redirect:/html/main/login.html";
+            return "redirect:main";
         }
         for(Member member : members){
             logger.info("id :: " +member.getId());
@@ -53,7 +54,7 @@ public class LoginController {
     @GetMapping("/register")
     public String registerForm(){
         logger.info("register Form!!");
-        return "/html/main/registerForm.html";
+        return "main/registerForm";
     }
 
     //회원가입 수행
@@ -68,6 +69,6 @@ public class LoginController {
         }else{
             logger.info("회원가입 실패");
         }
-        return "redirect:/html/main/login.html";
+        return "redirect:main";
     }
 }
