@@ -24,4 +24,8 @@ public class Board {
         this.username = username;
         this.updateDate = updateDate;
     }
+
+    public String toString(){
+        return "seq : "+ Long.toString(seq) + " title : "+ title + " content : " + content ;
+    }
 }

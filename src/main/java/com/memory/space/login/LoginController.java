@@ -40,7 +40,7 @@ public class LoginController {
         //멤버출력
         if(members.size()==0){
             logger.info("등록 되지 않은 회원입니다.");
-            return "redirect:main";
+            return "redirect:/main";
         }
         for(Member member : members){
             logger.info("id :: " +member.getId());

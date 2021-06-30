@@ -1,6 +1,8 @@
 package com.memory.space.board;
 
 import com.memory.space.member.MemberRepository;
+import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,26 +17,25 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/board")
+@RequiredArgsConstructor
 public class BoardController {
     Logger logger = LoggerFactory.getLogger(this.getClass());
-
-    @Autowired
-    final BoardRepository boardRepository = new BoardRepository();
+    private final BoardRepository boardRepository;
 
     //게시판 메인 화면 이동
     @GetMapping
-    public String main(Model model){
+    public String goBoard(Model model){
         logger.info("board main page");
         List<Board> boardList = boardRepository.findByAll();
-        /*
+
         if(boardList.size() > 0){
-            model.addAttribute("boardList",boardList);
             for(int i=0;i<boardList.size();i++){
-                logger.info(boardList.get(i).title);
+                logger.info(boardList.get(i).toString());
             }
-        }*/
+        }
         model.addAttribute("boardList",boardList);
         logger.info(boardList.toString());
+
         return "board/boardList";
     }
 
@@ -43,8 +44,7 @@ public class BoardController {
     @GetMapping("/registerForm")
     public String registerForm(){
         logger.info("board register Form!!");
-
-        return "/html/board/boardForm.html";
+        return "board/boardForm";
     }
 
     //게시글 등록
@@ -58,9 +58,9 @@ public class BoardController {
             logger.info("게시글 등록성공");
         }else{
             logger.info("등록 실패");
-            return "/html/board/boardForm.html";
+            return "board/boardForm";
         }
-        return "redirect:/html/board/boardList.html";
+        return "redirect:/board";
     }
 
 }
