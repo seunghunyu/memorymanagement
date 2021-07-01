@@ -61,4 +61,9 @@ public class BoardRepository {
             return "failed";
         }
     }
+    //게시글 상세 정보 가져오기
+    public Board findBySeq(long boardSeq){
+        Board board = jdbcTemplate.queryForObject("SELECT * FROM BOARD WHERE SEQ = "+ Long.toString(boardSeq),boardRowMapper);
+        return board;
+    }
 }

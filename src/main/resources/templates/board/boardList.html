@@ -26,8 +26,8 @@
     </thead>
     <tbody>
     <tr th:each="board : ${boardList}">
-        <td th:text="${board.seq}"></td>
-        <td th:text="${board.title}"></td>
+        <td><a href="board.html" th:href="@{/basic/items/{boardSeq}(itemId=${board.id})}" th:text="${board.seq}"></a></td>
+        <td><a href="board.html" th:href="@{/basic/items/{boardSeq}(itemId=${board.id})}" th:text="${board.title}"></a></td>
         <td th:text="${board.content}"></td>
         <td th:text="${board.id}"></td>
         <td th:text="${board.username}"></td>
