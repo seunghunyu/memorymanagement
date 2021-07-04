@@ -63,6 +63,7 @@ public class BoardRepository {
     }
     //게시글 상세 정보 가져오기
     public Board findBySeq(long boardSeq){
+        logger.info("게시글 상세정보 가져오기");
         Board board = jdbcTemplate.queryForObject("SELECT * FROM BOARD WHERE SEQ = "+ Long.toString(boardSeq),boardRowMapper);
         return board;
     }

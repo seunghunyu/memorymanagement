@@ -61,7 +61,8 @@ public class BoardController {
     }
 
     @GetMapping("/{boardSeq}")
-    public String item(@PathVariable long boardSeq, Model model) {
+    public String item(@PathVariable Long boardSeq, Model model) {
+        logger.info("게시글 상세보기");
         Board board = boardRepository.findBySeq(boardSeq);
         model.addAttribute("board", board);
         return "board/board";
