@@ -24,6 +24,7 @@ public class BoardController {
     public String goBoard(Model model){
         logger.info("board main page");
         List<Board> boardList = boardRepository.findByAll();
+        int totalCnt = boardRepository.boardCount();
 
         if(boardList.size() > 0){
             for(int i=0;i<boardList.size();i++){
@@ -32,7 +33,7 @@ public class BoardController {
         }
         model.addAttribute("boardList",boardList);
         logger.info(boardList.toString());
-
+        logger.info("총 게시글 갯수 : " + Integer.toString(totalCnt));
         return "board/boardList";
     }
 

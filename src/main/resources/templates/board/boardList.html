@@ -25,14 +25,14 @@
     </thead>
     <tbody>
     <tr th:each="board : ${boardList}">
-        <td><a th:href="@{/board/{boardSeq}(boardSeq=${board.seq})}" th:text="${board.seq}"></a></td>
-        <td><a th:href="@{/board/{boardSeq}(boardSeq=${board.seq})}" th:text="${board.title}"></a></td>
-        <td th:text="${board.content}"></td>
-        <td th:text="${board.id}"></td>
-        <td th:text="${board.username}"></td>
-        <td th:text="${board.updateDate}"></td>
-    </tr>
-    </tbody>
+<td><a th:href="@{/board/{boardSeq}(boardSeq=${board.seq})}" th:text="${board.seq}"></a></td>
+<td><a th:href="@{/board/{boardSeq}(boardSeq=${board.seq})}" th:text="${board.title}"></a></td>
+<td th:text="${board.content}"></td>
+<td th:text="${board.id}"></td>
+<td th:text="${board.username}"></td>
+<td th:text="${board.updateDate}"></td>
+</tr>
+</tbody>
 </table>
 
 

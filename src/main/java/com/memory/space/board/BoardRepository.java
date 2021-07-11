@@ -49,6 +49,11 @@ public class BoardRepository {
         List<Board> board = jdbcTemplate.query("SELECT * FROM BOARD ORDER BY SEQ DESC",boardRowMapper);
         return board;
     }
+    //게시글 갯수 가져오기
+    public int boardCount(){
+        int totalCnt = jdbcTemplate.queryForObject("SELECT COUNT(*) FROM BOARD ORDER BY SEQ DESC",Integer.class);
+        return totalCnt;
+    }
 
     //게시글 등록
     public String register(String title,String content,String id,String username){
