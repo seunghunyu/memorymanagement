@@ -31,9 +31,13 @@ public class BoardController {
                 logger.info(boardList.get(i).toString());
             }
         }
+        String pageCnt = Integer.toString((int)Math.ceil(totalCnt / 5));
         model.addAttribute("boardList",boardList);
+        model.addAttribute("pageCnt",pageCnt);
+
         logger.info(boardList.toString());
         logger.info("총 게시글 갯수 : " + Integer.toString(totalCnt));
+        logger.info("총 게시글 페이지 갯수 : " + pageCnt);
         return "board/boardList";
     }
 

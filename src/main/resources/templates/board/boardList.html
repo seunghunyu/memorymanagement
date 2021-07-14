@@ -4,13 +4,21 @@
     <meta charset="UTF-8">
     <link th:href="@{/css/bootstrap.min.css}"
           href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href=""
     <title>게시판목록</title>
 </head>
 <body>
+<script th:inline="javascript">
+      	var pageCnt = [[${pageCnt}]];
+      	console.log(pageCnt);
+</script>
 <script type="text/javascript">
+    var pageCnt = '${pageCnt}';
     document.addEventListener("DOMContentLoaded", function(){
         console.log("로딩");
+        alert(pageCnt);
     });
+
 </script>
 <table class = "table">
     <thead>
@@ -25,17 +33,18 @@
     </thead>
     <tbody>
     <tr th:each="board : ${boardList}">
-<td><a th:href="@{/board/{boardSeq}(boardSeq=${board.seq})}" th:text="${board.seq}"></a></td>
-<td><a th:href="@{/board/{boardSeq}(boardSeq=${board.seq})}" th:text="${board.title}"></a></td>
-<td th:text="${board.content}"></td>
-<td th:text="${board.id}"></td>
-<td th:text="${board.username}"></td>
-<td th:text="${board.updateDate}"></td>
-</tr>
+        <td><a th:href="@{/board/{boardSeq}(boardSeq=${board.seq})}" th:text="${board.seq}"></a></td>
+        <td><a th:href="@{/board/{boardSeq}(boardSeq=${board.seq})}" th:text="${board.title}"></a></td>
+        <td th:text="${board.content}"></td>
+        <td th:text="${board.id}"></td>
+        <td th:text="${board.username}"></td>
+        <td th:text="${board.updateDate}"></td>
+    </tr>
 </tbody>
 </table>
-
-
-<button type ="button" id = "register" onClick="location.href='/board/registerForm'">게시글 작성</button>
+<button type ="button" id = "register" onClick="lcation.href='/board/registerForm'">게시글 작성</button>
+<br>
+<br>
+<div id = "pageCnt"></div>
 </body>
 </html>
