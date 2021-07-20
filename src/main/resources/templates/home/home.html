@@ -9,14 +9,14 @@
     <link rel="icon" th:href="@{/static/assets/favicon.ico}">
 
     <title>Carousel Template for Bootstrap</title>
-
+    <script th:src="@{/static/js/jquery-3.6.0.js}"></script>
     <!-- Bootstrap core CSS
     <link href="../../dist/css/bootstrap.min.css" rel="stylesheet"> -->
     <link rel="stylesheet" th:href="@{/static/dist/css/bootstrap.min.css}">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script th:src="@{/static/assets/js/ie8-responsive-file-warning.js}"></script><![endif]-->
-    <script th:src="@{/static./assets/js/ie-emulation-modes-warning.js}"></script>
+    <script th:src="@{/static/assets/js/ie-emulation-modes-warning.js}"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9] -->
@@ -81,31 +81,31 @@
       </ol>
       <div class="carousel-inner" role="listbox">
         <div class="item active">
-          <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="First slide">
+          <img th:src="@{/static/img/ddangko/ddangko.PNG}" alt="First slide">
           <div class="container">
             <div class="carousel-caption">
               <h1>고기 투어</h1>
-              <p>돼지 관련 이미지 페이지 담기</p>
+              <p>땅코 목살 한점..</p>
               <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
             </div>
           </div>
         </div>
-        <div class="item">
-          <img src="data:image/gif;base64,R0lGODlhAQABAIAAAGZmZgAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Second slide">
+        <div class="item" >
+          <img th:src="@{/static/img/jungsuyong/suyong.PNG}" alt="Second slide">
           <div class="container">
             <div class="carousel-caption">
-              <h1>Another example headline.</h1>
-              <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+              <h1>정수용식당</h1>
+              <p>목살 진짜 맛있는데...</p>
               <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
             </div>
           </div>
         </div>
-        <div class="item">
-          <img src="data:image/gif;base64,R0lGODlhAQABAIAAAFVVVQAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Third slide">
+        <div class="item" >
+          <img th:src="@{/static/img/jungsuyong/jjigae.PNG}" alt="Third slide">
           <div class="container">
             <div class="carousel-caption">
-              <h1>One more for good measure.</h1>
-              <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+              <h1>수용쓰 된찌...</h1>
+              <p>너무맛있지..술이 술술</p>
               <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
             </div>
           </div>
