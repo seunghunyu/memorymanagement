@@ -20,11 +20,19 @@ public class BoardController {
     private final BoardRepository boardRepository;
 
     //게시판 메인 화면 이동
-    @GetMapping
-    public String goBoard(Model model){
+    @GetMapping(value = {"","/{pageSeq}"})
+    public String goBoard(@PathVariable(required = false) Integer pageSeq,Model model){
         logger.info("board main page");
-        List<Board> boardList = boardRepository.findByAll();
+        int pageNum;
+        if(pageSeq == null){
+            pageNum = 1;
+        }else{
+            pageNum = pageSeq;
+        }
+
         int totalCnt = boardRepository.boardCount();
+        List<Board> boardList = boardRepository.findByAll(pageNum , totalCnt);
+
 
         if(boardList.size() > 0){
             for(int i=0;i<boardList.size();i++){

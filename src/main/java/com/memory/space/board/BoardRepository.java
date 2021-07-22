@@ -45,8 +45,32 @@ public class BoardRepository {
         }
     };
     //게시글모두 불러오기
-    public List<Board> findByAll(){
-        List<Board> board = jdbcTemplate.query("SELECT * FROM BOARD ORDER BY SEQ DESC",boardRowMapper);
+    public List<Board> findByAll(Integer startNum, Integer totalCnt){
+        int pageBoardCnt = 5; // 한 페이지에 5개씩 보여야함
+        int start;
+        int end;
+        if(startNum == null) {
+            start = 1;
+            end = pageBoardCnt;
+        }else {
+            start = startNum;
+
+
+        }
+
+        String qry = "";
+        qry += " SELECT * ";
+        qry += " FROM ";
+        qry += " ( ";
+        qry += " SELECT /*+ INDEX(b PK1) */ ";
+        qry += "   ROWNUM AS RNUM, b.* ";
+        qry += "  FROM BOARD b ";
+        qry += " WHERE ROWNUM <= 5 ";
+        qry += " ) ";
+        qry += " WHERE 1 <= RNUM ";
+        List<Board> board = jdbcTemplate.query(qry,boardRowMapper);
+        //List<Board> board = jdbcTemplate.queryForList(qry,Board.class);
+
         return board;
     }
     //게시글 갯수 가져오기
