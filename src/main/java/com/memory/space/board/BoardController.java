@@ -24,6 +24,7 @@ public class BoardController {
     public String goBoard(@PathVariable(required = false) Integer pageSeq,Model model){
         logger.info("board main page");
         int pageNum;
+        //pathValue 별 페이지 표시 필요
         if(pageSeq == null){
             pageNum = 1;
         }else{
