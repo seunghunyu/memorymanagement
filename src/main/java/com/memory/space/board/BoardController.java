@@ -74,7 +74,7 @@ public class BoardController {
         return "redirect:/board";
     }
 
-    @GetMapping("/{boardSeq}")
+    @GetMapping("/detail/{boardSeq}")
     public String item(@PathVariable Long boardSeq, Model model) {
         logger.info("게시글 상세보기");
         Board board = boardRepository.findBySeq(boardSeq);
