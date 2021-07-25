@@ -15,7 +15,8 @@
         alert(pageCnt);
         if(pageCnt > 1){
             for(var i = 0 ; i < pageCnt ; i++){
-                var tagInfo = "<a href='/board/"+parseInt(i+1)+"'>["+parseInt(i+1)+"] </a>";
+                //var tagInfo = "<a href='/board/"+parseInt(i+1)+"'>["+parseInt(i+1)+"] </a>";
+                var tagInfo = "<a href='/board'>["+parseInt(i+1)+"] </a>";
                 $('#pageCnt').append(tagInfo);
             }
         }
