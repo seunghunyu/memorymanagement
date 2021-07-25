@@ -31,22 +31,25 @@ public class BoardController {
             pageNum = pageSeq;
         }
 
-        int totalCnt = boardRepository.boardCount();
-        List<Board> boardList = boardRepository.findByAll(pageNum , totalCnt);
+        double totalCnt = boardRepository.boardCount();
+        List<Board> boardList = boardRepository.findByAll(pageNum , (int)totalCnt);
 
-
+        /*
         if(boardList.size() > 0){
             for(int i=0;i<boardList.size();i++){
                 logger.info(boardList.get(i).toString());
             }
         }
+        */
+
         String pageCnt = Integer.toString((int)Math.ceil(totalCnt / 5));
         model.addAttribute("boardList",boardList);
         model.addAttribute("pageCnt",pageCnt);
 
         logger.info(boardList.toString());
-        logger.info("총 게시글 갯수 : " + Integer.toString(totalCnt));
+        logger.info("총 게시글 갯수 : " + Double.toString(totalCnt));
         logger.info("총 게시글 페이지 갯수 : " + pageCnt);
+        logger.info("총 게시글 페이지 갯수 : " + Double.toString(totalCnt / 5));
         return "board/boardList";
     }
 

@@ -24,7 +24,6 @@ public class BoardRepository {
     RowMapper<Board> boardRowMapper = new RowMapper<Board>() {
         @Override
         public Board mapRow(ResultSet rs, int rowNum) throws SQLException {
-            logger.info("memberRowMapper");
             Board board = new Board();
 
             Long seq;
@@ -45,19 +44,20 @@ public class BoardRepository {
         }
     };
     //게시글모두 불러오기
-    public List<Board> findByAll(Integer startNum, Integer totalCnt){
+    public List<Board> findByAll(Integer startNum, int totalCnt){
         int pageBoardCnt = 5; // 한 페이지에 5개씩 보여야함
         int start;
         int end;
+
+
         if(startNum == null) {
-            start = 1;
             end = pageBoardCnt;
+            start = 1;
         }else {
-            start = startNum;
-
-
+            end  = startNum * pageBoardCnt;
+            start = end - pageBoardCnt+1;
         }
-
+        logger.info("시작 rownum:"+Integer.toString(start)+"/종료 rownum:"+Integer.toString(end));
         String qry = "";
         qry += " SELECT * ";
         qry += " FROM ";
@@ -65,17 +65,17 @@ public class BoardRepository {
         qry += " SELECT /*+ INDEX(b PK1) */ ";
         qry += "   ROWNUM AS RNUM, b.* ";
         qry += "  FROM BOARD b ";
-        qry += " WHERE ROWNUM <= 5 ";
+        qry += " WHERE ROWNUM <= "+ Integer.toString(end);
         qry += " ) ";
-        qry += " WHERE 1 <= RNUM ";
+        qry += " WHERE " + Integer.toString(start) +"<= RNUM ";
         List<Board> board = jdbcTemplate.query(qry,boardRowMapper);
         //List<Board> board = jdbcTemplate.queryForList(qry,Board.class);
 
         return board;
     }
     //게시글 갯수 가져오기
-    public int boardCount(){
-        int totalCnt = jdbcTemplate.queryForObject("SELECT COUNT(*) FROM BOARD ORDER BY SEQ DESC",Integer.class);
+    public double boardCount(){
+        Double totalCnt = jdbcTemplate.queryForObject("SELECT COUNT(*) FROM BOARD ORDER BY SEQ DESC",Double.class);
         return totalCnt;
     }
 
