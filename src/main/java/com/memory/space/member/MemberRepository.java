@@ -42,8 +42,8 @@ public class MemberRepository {
         return member;
     }
     //특정회원 찾기
-    public List<Member> findById(String id){
-        List<Member> member = jdbcTemplate.query("SELECT * FROM MEMBER WHERE ID = ?",memberRowMapper,id);
+    public Member findById(String id){
+        Member member = jdbcTemplate.queryForObject("SELECT * FROM MEMBER WHERE ID = ?",Member.class,id);
         logger.info(member.toString());
         return member;
     }

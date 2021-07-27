@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
@@ -29,25 +30,28 @@ public class LoginController {
 
     //로그인 기능 수행 -> 로그인 후 게시판이동
     @PostMapping("/loginGo")
-    public String login(@RequestParam("id") String id,
+    public String login(HttpServletRequest request,
+                        @RequestParam("id") String id,
                         @RequestParam("password") String password){
         logger.info("login!!");
         logger.info("id:"+id+"    password:"+password);
 
-        HttpSession httpSession;
+        HttpSession httpSession = request.getSession();
+
 
         String validId = "";
 
 //      List<Member> memberList = memberRepository.findByAll();
-        List<Member> members = memberRepository.findById(id);
+        Member member = memberRepository.findById(id);
         //멤버출력
-        if(members.size()==0){
+        if(member==null){
             logger.info("등록 되지 않은 회원입니다.");
             return "redirect:/main";
+        }else{
+            httpSession.setAttribute("loginId",member.getId());
         }
-        for(Member member : members){
-            logger.info("id :: " +member.getId());
-        }
+
+        logger.info("로그인ID : "+(String)httpSession.getAttribute("loginId"));
 
         return "redirect:/board";
         //redirect 안붙이면 405에러...왜일까....
