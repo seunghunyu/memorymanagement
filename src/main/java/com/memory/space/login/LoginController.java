@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -22,7 +23,7 @@ public class LoginController {
     //main 로그인 화면 이동
     @GetMapping
     public String goMain(){
-        logger.info("제발~~~~~~~main page");
+        logger.info("로그인 page");
         return "main/login";
     }
 
@@ -32,6 +33,8 @@ public class LoginController {
                         @RequestParam("password") String password){
         logger.info("login!!");
         logger.info("id:"+id+"    password:"+password);
+
+        HttpSession httpSession;
 
         String validId = "";
 
