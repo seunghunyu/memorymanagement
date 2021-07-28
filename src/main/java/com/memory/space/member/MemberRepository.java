@@ -42,9 +42,15 @@ public class MemberRepository {
         return member;
     }
     //특정회원 찾기
-    public Member findById(String id){
-        Member member = jdbcTemplate.queryForObject("SELECT * FROM MEMBER WHERE ID = ?",Member.class,id);
-        logger.info(member.toString());
+    public Member findById(String id,String password){
+        Member member;
+        try {
+            member = jdbcTemplate.queryForObject("SELECT * FROM MEMBER WHERE ID = ? and password = ?", memberRowMapper, id, password);
+            logger.info(member.toString());
+        }catch(Exception e){
+            logger.info("아이디 혹은 비밀번호가 틀렸습니다.");
+            return null;
+        }
         return member;
     }
 

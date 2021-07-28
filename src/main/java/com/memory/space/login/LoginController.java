@@ -30,28 +30,26 @@ public class LoginController {
 
     //로그인 기능 수행 -> 로그인 후 게시판이동
     @PostMapping("/loginGo")
-    public String login(HttpServletRequest request,
+    public String login(HttpSession session,
                         @RequestParam("id") String id,
-                        @RequestParam("password") String password){
+                        @RequestParam("password") String password,Model model){
         logger.info("login!!");
         logger.info("id:"+id+"    password:"+password);
-
-        HttpSession httpSession = request.getSession();
-
 
         String validId = "";
 
 //      List<Member> memberList = memberRepository.findByAll();
-        Member member = memberRepository.findById(id);
+        Member member = memberRepository.findById(id,password);
         //멤버출력
         if(member==null){
             logger.info("등록 되지 않은 회원입니다.");
+            model.addAttribute("login_fail","등록 되지 않은 회원입니다.");
             return "redirect:/main";
         }else{
-            httpSession.setAttribute("loginId",member.getId());
+            session.setAttribute("loginId",member.getId());
         }
 
-        logger.info("로그인ID : "+(String)httpSession.getAttribute("loginId"));
+        logger.info("로그인ID : "+(String)session.getAttribute("loginId"));
 
         return "redirect:/board";
         //redirect 안붙이면 405에러...왜일까....

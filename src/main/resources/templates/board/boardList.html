@@ -11,8 +11,6 @@
 <script type="text/javascript">
     var pageCnt = [[${pageCnt}]];
     document.addEventListener("DOMContentLoaded", function(){
-        console.log("로딩");
-        alert(pageCnt);
         if(pageCnt > 1){
             for(var i = 0 ; i < pageCnt ; i++){
                 var tagInfo = "<a href='/board/"+parseInt(i+1)+"'>["+parseInt(i+1)+"] </a>";
@@ -22,6 +20,7 @@
         }
     });
 </script>
+<h1 th:text="${session.loginId}"></h1>님 로그인 중입니다. <br><br>
 <table class = "table">
     <thead>
     <tr>
