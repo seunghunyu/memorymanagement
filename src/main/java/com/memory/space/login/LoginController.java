@@ -44,6 +44,7 @@ public class LoginController {
         if(member==null){
             logger.info("등록 되지 않은 회원입니다.");
             model.addAttribute("login_fail","등록 되지 않은 회원입니다.");
+            model.addAttribute("err","asd");
             return "redirect:/main";
         }else{
             session.setAttribute("loginId",member.getId());
