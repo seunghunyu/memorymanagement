@@ -10,16 +10,20 @@
         <body>
         <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
         <script th:inline="javascript">
-           /*<![CDATA[*/
-            var errMsg = /*[[ ${login_fail} ]]*/;
-              /*]]*/
+            $(document).ready(function(){
+                var qryParam = location.search;
+                var params = new URLSearchParams(qryParam);
 
-            document.addEventListener("DOMContentLoaded", function(){
-                if(errMsg != ""){
+                var errMsg = params.get('login_fail');
+                if(errMsg != null && errMsg != ""){
                     alert(errMsg);
                 }
             });
+
+<!--            document.addEventListener("DOMContentLoaded", function(){      -->
+<!--            });-->
         </script>
+<!--        <h1 th:text="${login_fail}"></h1><br><br>-->
         <h1 class = "h1" style = >TOY PROJECT</h1>
         <form action = "/main/loginGo" id = "login_info" method = "post">
             아이디 : <input type = "text" name="id"><br><br>

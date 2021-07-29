@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -32,7 +33,9 @@ public class LoginController {
     @PostMapping("/loginGo")
     public String login(HttpSession session,
                         @RequestParam("id") String id,
-                        @RequestParam("password") String password,Model model){
+                        @RequestParam("password") String password,
+                        RedirectAttributes redirectAttributes,
+                        Model model){
         logger.info("login!!");
         logger.info("id:"+id+"    password:"+password);
 
@@ -43,8 +46,10 @@ public class LoginController {
         //멤버출력
         if(member==null){
             logger.info("등록 되지 않은 회원입니다.");
-            model.addAttribute("login_fail","등록 되지 않은 회원입니다.");
-            model.addAttribute("err","asd");
+            redirectAttributes.addAttribute("login_fail","등록 되지 않은 회원입니다.");
+            //model.addAttribute("login_fail","등록 되지 않은 회원입니다.");
+            //model.addAttribute("err","asd");
+            //logger.info("login_fail :::"+model.getAttribute("login_fail").toString());
             return "redirect:/main";
         }else{
             session.setAttribute("loginId",member.getId());
