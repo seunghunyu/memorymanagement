@@ -72,13 +72,17 @@ public class LoginController {
     @PostMapping("/register")
     public String register(@RequestParam("id") String id,
                            @RequestParam("username") String username,
-                           @RequestParam("password") String password){
+                           @RequestParam("password") String password) {
         logger.info("register!!");
-        String result = memberRepository.register(id,username,password);
-        if(result == "success"){
+        String result = memberRepository.register(id, username, password);
+        if(result == "success") {
             logger.info("회원가입 성공");
+        }else if(result == "exist"){
+            logger.info("이미 존재하는 아이디 입니다.");
+            return "redirect:register";
         }else{
             logger.info("회원가입 실패");
+            return "redirect:register";
         }
         return "redirect:main";
     }

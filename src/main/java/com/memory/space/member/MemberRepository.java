@@ -58,6 +58,10 @@ public class MemberRepository {
     public String register(String id,String username,String password){
         String sql = "INSERT INTO MEMBER VALUES(?, ?, ?)";
         try {
+            int userCnt = jdbcTemplate.queryForObject("SELECT COUNT(*) FROM MEMBER WHERE ID = ?",Integer.class,id);
+            if(userCnt > 0){
+                return "exist";
+            }
             jdbcTemplate.update(sql, id, username, password);
             return "success";
         }catch(Exception e){

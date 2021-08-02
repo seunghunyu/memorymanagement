@@ -29,6 +29,14 @@
   </head>
 <!-- NAVBAR
 ================================================== -->
+  <script th:inline="javascript">
+            $(document).ready(function(){
+
+            });
+            function popUpLogin(){
+              window.open("/main","로그인","width=300, height=300");
+            }
+  </script>
   <body>
     <div class="navbar-wrapper">
       <div class="container">
@@ -61,7 +69,7 @@
                     <li><a href="#">One more separated link</a></li>
                   </ul>
                 </li>
-                <li><a>로그인</a></li>
+                <li><a href = "#" onclick="popUpLogin();">로그인</a></li>
                 <li><a>회원가입</a></li>
               </ul>
             </div>
