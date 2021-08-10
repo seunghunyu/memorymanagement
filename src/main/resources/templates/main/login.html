@@ -24,13 +24,13 @@
 <!--            });-->
         </script>
 <!--        <h1 th:text="${login_fail}"></h1><br><br>-->
-        <h1 class = "h1" style = >TOY PROJECT</h1>
+        <h1 class = "h1" >TOY PROJECT</h1>
         <form action = "/main/loginGo" id = "login_info" method = "post">
             아이디 : <input type = "text" name="id"><br><br>
             비밀번호  : <input type = "text" name="password"><br><br>
-            <input type="submit" value = "로그인" class="button">
-            <input type="reset" value = "초기화" class="button">
-            <button type ="button" id = "register" class="button" onClick="location.href='/main/register'">회원가입</button>
+            <input type="submit" value = "로그인" class="button" th:text="#{button.login}">
+            <input type="reset" value = "초기화" class="button" th:text="#{button.reset}">
+            <button type ="button" id = "register" class="button" th:text="#{button.signup}" onClick="location.href='/main/register'">회원가입</button>
         </form>
 </body>
 </html>
