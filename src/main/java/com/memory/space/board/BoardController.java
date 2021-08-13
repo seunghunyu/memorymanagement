@@ -84,5 +84,10 @@ public class BoardController {
         model.addAttribute("board", board);
         return "board/board";
     }
+    @GetMapping("/imgUpload")
+    public String imgUpload(Model model) {
+        logger.info("이미지 업로드");
+        return "board/board";
+    }
 
 }
