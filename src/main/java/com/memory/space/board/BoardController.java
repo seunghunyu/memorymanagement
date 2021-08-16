@@ -9,7 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.lang.reflect.InaccessibleObjectException;
 import java.util.List;
 
 @Controller
@@ -84,8 +87,8 @@ public class BoardController {
         model.addAttribute("board", board);
         return "board/board";
     }
-    @GetMapping("/imgUpload")
-    public String imgUpload(Model model) {
+    @PostMapping("/imgUpload")
+    public String imgUpload(@RequestParam MultipartFile[] uploadFile, Model model) throws IllegalStateException, IOException {
         logger.info("이미지 업로드");
         return "board/board";
     }
