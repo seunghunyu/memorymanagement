@@ -8,11 +8,18 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.annotation.Resource;
+import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.InaccessibleObjectException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.List;
 
 @Controller
@@ -87,10 +94,21 @@ public class BoardController {
         model.addAttribute("board", board);
         return "board/board";
     }
+
+
     @PostMapping("/imgUpload")
     public String imgUpload(@RequestParam MultipartFile[] uploadFile, Model model) throws IllegalStateException, IOException {
         logger.info("이미지 업로드");
-        return "board/board";
+        String basePath = "C:\\Temp\\upload";
+        MultipartFile[] fileList = uploadFile;
+        for(int i = 0 ; i < fileList.length ; i++){
+            logger.info("fileName:"+fileList[i].getOriginalFilename());
+            String targetPath = basePath + "\\" + fileList[i].getOriginalFilename();
+            Path copyOfLocation = Paths.get(basePath + File.separator + StringUtils.cleanPath(fileList[i].getOriginalFilename()));
+            //File target  = new File(uploadPath,fileList[i].getOriginalFilename());
+            Files.copy(fileList[i].getInputStream(), copyOfLocation, StandardCopyOption.REPLACE_EXISTING);
+        }
+        return "redirect:/board";
     }
 
 }
