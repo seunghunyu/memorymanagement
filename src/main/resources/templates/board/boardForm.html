@@ -7,15 +7,30 @@
     <title>게시글 등록</title>
 </head>
 <body>
+    <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script th:inline="javascript">
+    /*
+      $(function(){ $("#listButton").click(function(){
+        $.ajax({ type: 'post' ,
+                 url: '/board/register' ,
+                 dataType : 'html' ,
+                 success: function(data) {
+                    $("#listDiv").html(data);
+                 }
+        }); })
+        })
+    */
+    </script>
     게시글 등록 페이지입니다.
-    <form action = "/board/register" name = "board_info" method = "post">
+    <form action = "/board/register" name = "board_info" method = "post" enctype="multipart/form-data">
         제목 : <input type = "text" name="title"><br>
         내용 : <input type = "textarea" name="content"><br>
+        파일 업로드 <input type = "file" name = "uploadFile" multiple="multiple"><br>
         <input type="reset" value = "초기화">
         <button id = "register" th:text="#{button.register}">등록</button>
     </form>
    <!-- <button type = button id = "imgUpload" onClick="location.href='/board/imgUpload'">이미지 업로드</button>`-->
-    <form method = "post" action="/board/imgUpload" enctype="multipart/form-data">
+    <form method = "post"  enctype="multipart/form-data">
         <input type = "file" name = "uploadFile" multiple="multiple">
         <input type = "submit">
     </form>

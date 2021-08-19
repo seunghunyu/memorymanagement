@@ -74,7 +74,9 @@ public class BoardController {
     //게시글 등록
     @PostMapping("/register")
     public String register(@RequestParam("title") String title,
-                           @RequestParam("content") String content){
+                           @RequestParam("content") String content,
+                           @RequestParam MultipartFile[] uploadFile,
+                           Model model) throws IllegalStateException, IOException {
         logger.info("board register!!");
 
         String result = boardRepository.register(title,content,"admin","admin");
@@ -83,6 +85,13 @@ public class BoardController {
         }else{
             logger.info("등록 실패");
             return "board/boardForm";
+        }
+        if(uploadFile != null){
+            if(fileUpload(uploadFile) == true){
+                logger.info("파일업로드 실패");
+            }else{
+                logger.info("파일업로드 성공");
+            }
         }
         return "redirect:/board";
     }
@@ -109,6 +118,24 @@ public class BoardController {
             Files.copy(fileList[i].getInputStream(), copyOfLocation, StandardCopyOption.REPLACE_EXISTING);
         }
         return "redirect:/board";
+    }
+
+    private boolean fileUpload(MultipartFile[] uploadFile) throws IllegalStateException, IOException {
+        try {
+            String basePath = "C:\\Temp\\upload";
+            MultipartFile[] fileList = uploadFile;
+            for (int i = 0; i < fileList.length; i++) {
+                logger.info("fileName:" + fileList[i].getOriginalFilename());
+                String targetPath = basePath + "\\" + fileList[i].getOriginalFilename();
+                Path copyOfLocation = Paths.get(basePath + File.separator + StringUtils.cleanPath(fileList[i].getOriginalFilename()));
+                //File target  = new File(uploadPath,fileList[i].getOriginalFilename());
+                Files.copy(fileList[i].getInputStream(), copyOfLocation, StandardCopyOption.REPLACE_EXISTING);
+            }
+
+            return true;
+        }catch(Exception e){
+            return false;
+        }
     }
 
 }
