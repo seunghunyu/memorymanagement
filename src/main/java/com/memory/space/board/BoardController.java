@@ -79,7 +79,7 @@ public class BoardController {
                            Model model) throws IllegalStateException, IOException {
         logger.info("board register!!");
 
-        String result = boardRepository.register(title,content,"admin","admin");
+        String result = boardRepository.register(title,content,"admin","admin",uploadFile);
         if(result.equals("success")){
             logger.info("게시글 등록성공");
         }else{

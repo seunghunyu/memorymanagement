@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -80,10 +81,18 @@ public class BoardRepository {
     }
 
     //게시글 등록
-    public String register(String title,String content,String id,String username){
-        String sql = "INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL, ?, ?, ?, ?, TO_CHAR(SYSDATE,'YYYYMMDD'))";
+    public String register(String title, String content, String id, String username, MultipartFile[] uploadFile){
+        String fileNm = "";
+        //upload파일이 있으면 파일명조합
+        if(uploadFile.length > 0){
+            for(int i = 0 ;  i < uploadFile.length ; i++){
+                fileNm = fileNm + ";" + uploadFile[i].getOriginalFilename();
+            }
+            fileNm = fileNm.substring(1);
+        }
+        String sql = "INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL, ?, ?, ?, ?, ? TO_CHAR(SYSDATE,'YYYYMMDD'))";
         try {
-            jdbcTemplate.update(sql, title, content, id, username);
+            jdbcTemplate.update(sql, title, content, id, username, fileNm);
             return "success";
         }catch(Exception e){
             e.printStackTrace();
