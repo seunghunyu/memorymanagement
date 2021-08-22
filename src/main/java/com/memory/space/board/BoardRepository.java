@@ -33,6 +33,7 @@ public class BoardRepository {
             String id;
             String username;
             String updateDate;
+            String fileName;
 
             board.setSeq(rs.getLong("seq"));
             board.setTitle(rs.getString("title"));
@@ -40,6 +41,7 @@ public class BoardRepository {
             board.setId(rs.getString("id"));
             board.setUsername(rs.getString("username"));
             board.setUpdateDate(rs.getString("updateDate"));
+            board.setFileName(rs.getString("file_Nm"));
 
             return board;
         }
