@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.InaccessibleObjectException;
@@ -31,7 +32,14 @@ public class BoardController {
 
     //게시판 메인 화면 이동
     @GetMapping(value = {"","/{pageSeq}"})
-    public String goBoard(@PathVariable(required = false) Integer pageSeq,Model model){
+    public String goBoard(HttpSession session,
+                          @PathVariable(required = false) Integer pageSeq,
+                          Model model){
+        //session이 없을떄 메인으로 이동
+        if(session.getAttribute("loginId")==null){
+            logger.info("세션이 없습니다. 로그인해주세요.");
+            return "main/login";
+        }
         logger.info("board main page");
         int pageNum;
         //pathValue 별 페이지 표시 필요

@@ -10,7 +10,12 @@
 <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script type="text/javascript">
     var pageCnt = [[${pageCnt}]];
+    var loginId = [[${session.loginId}]];
     document.addEventListener("DOMContentLoaded", function(){
+        if(loginId === ""){
+            alert("로그인 하십시오.");
+            location.href="/main";
+        }
         if(pageCnt > 1){
             for(var i = 0 ; i < pageCnt ; i++){
                 var tagInfo = "<a href='/board/"+parseInt(i+1)+"'>["+parseInt(i+1)+"] </a>";
