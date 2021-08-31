@@ -85,14 +85,16 @@ public class BoardRepository {
     //게시글 등록
     public String register(String title, String content, String id, String username, MultipartFile[] uploadFile){
         String fileNm = "";
+        String basePath = "C:\\Temp\\upload\\";
         //upload파일이 있으면 파일명조합
         if(uploadFile.length > 0){
             for(int i = 0 ;  i < uploadFile.length ; i++){
-                fileNm = fileNm + ";" + uploadFile[i].getOriginalFilename();
+                String filePath = basePath + uploadFile[i].getOriginalFilename();
+                fileNm = fileNm + ";" + filePath;
             }
             fileNm = fileNm.substring(1);
         }
-        String sql = "INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL, ?, ?, ?, ?, ? TO_CHAR(SYSDATE,'YYYYMMDD'))";
+        String sql = "INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL, ?, ?, ?, ?, TO_CHAR(SYSDATE,'YYYYMMDD'), ?)";
         try {
             jdbcTemplate.update(sql, title, content, id, username, fileNm);
             return "success";
