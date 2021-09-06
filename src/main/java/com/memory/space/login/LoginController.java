@@ -3,6 +3,7 @@ package com.memory.space.login;
 import com.memory.space.member.Member;
 import com.memory.space.member.MemberRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.Value;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

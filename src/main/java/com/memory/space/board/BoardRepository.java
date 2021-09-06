@@ -71,6 +71,7 @@ public class BoardRepository {
         qry += " WHERE ROWNUM <= "+ Integer.toString(end);
         qry += " ) ";
         qry += " WHERE " + Integer.toString(start) +"<= RNUM ";
+        qry += " ORDER BY seq DESC ";
         List<Board> board = jdbcTemplate.query(qry,boardRowMapper);
         //List<Board> board = jdbcTemplate.queryForList(qry,Board.class);
 
@@ -107,6 +108,7 @@ public class BoardRepository {
     public Board findBySeq(long boardSeq){
         logger.info("게시글 상세정보 가져오기");
         Board board = jdbcTemplate.queryForObject("SELECT * FROM BOARD WHERE SEQ = "+ Long.toString(boardSeq),boardRowMapper);
+
         return board;
     }
 }

@@ -1,11 +1,14 @@
 package com.memory.space.board;
 
+import ch.qos.logback.core.util.FileUtil;
 import com.memory.space.member.MemberRepository;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import org.apache.tomcat.util.http.fileupload.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -29,6 +32,9 @@ import java.util.List;
 public class BoardController {
     Logger logger = LoggerFactory.getLogger(this.getClass());
     private final BoardRepository boardRepository;
+
+    @Value("${spring.servlet.multipart.location}")
+    private String uploadPath;
 
     //게시판 메인 화면 이동
     @GetMapping(value = {"","/{pageSeq}"})
@@ -121,21 +127,32 @@ public class BoardController {
         for(int i = 0 ; i < fileList.length ; i++){
             logger.info("fileName:"+fileList[i].getOriginalFilename());
             String targetPath = basePath + "\\" + fileList[i].getOriginalFilename();
+
             Path copyOfLocation = Paths.get(basePath + File.separator + StringUtils.cleanPath(fileList[i].getOriginalFilename()));
+
             //File target  = new File(uploadPath,fileList[i].getOriginalFilename());
+
             Files.copy(fileList[i].getInputStream(), copyOfLocation, StandardCopyOption.REPLACE_EXISTING);
         }
         return "redirect:/board";
     }
 
     private boolean fileUpload(MultipartFile[] uploadFile) throws IllegalStateException, IOException {
+        logger.info("프로퍼티 upload path ::"+uploadPath);
         try {
             String basePath = "C:\\Temp\\upload";
+
+            basePath = uploadPath;
+
             MultipartFile[] fileList = uploadFile;
             for (int i = 0; i < fileList.length; i++) {
                 logger.info("fileName:" + fileList[i].getOriginalFilename());
                 String targetPath = basePath + "\\" + fileList[i].getOriginalFilename();
                 Path copyOfLocation = Paths.get(basePath + File.separator + StringUtils.cleanPath(fileList[i].getOriginalFilename()));
+                logger.info("copyOfLocation :::::: "+copyOfLocation.toString());
+
+                fileList[i].transferTo(new File(targetPath));
+
                 //File target  = new File(uploadPath,fileList[i].getOriginalFilename());
                 Files.copy(fileList[i].getInputStream(), copyOfLocation, StandardCopyOption.REPLACE_EXISTING);
             }
