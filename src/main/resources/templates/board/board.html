@@ -34,10 +34,12 @@
             <tr>
                 <td>사진</td>
                 <td><input type = "text" th:value ="${board.fileName}"/></td>
-                <img th:src="${board.fileName}">
             </tr>
         </tbody>
     </table>
+    <img th:src="${board.fileName}" widht="100" height = "100">  1 <br>
+    <img src = "C:\\Temp\\upload\\ddanko.png" widht="100" height = "100"> 2<br>
+    <img th:src="@{/static/img/ddangko/ddangko.PNG}" widht="100" height = "100"> 3<br>
 </div>
 </body>
 </html>

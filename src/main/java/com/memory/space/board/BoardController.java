@@ -115,6 +115,7 @@ public class BoardController {
         logger.info("게시글 상세보기");
         Board board = boardRepository.findBySeq(boardSeq);
         model.addAttribute("board", board);
+
         return "board/board";
     }
 
