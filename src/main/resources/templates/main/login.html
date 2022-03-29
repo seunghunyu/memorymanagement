@@ -23,19 +23,46 @@
 <!--            document.addEventListener("DOMContentLoaded", function(){      -->
 <!--            });-->
         </script>
-        <div class = "container" style = "max-width: 600px">
+        <div class = "container" style = "max-width: 600px; padding-left : 100px">
             <div class = "py-5 text-center">
                 <h1 class = "h1" >TOY PROJECT</h1>
             </div>
+
             <form action = "/main/loginGo" id = "login_info" method = "post">
-                        <div id = 'idLabel' class = 'idLabel'> 아이디    :  <input type = "text" name="id"> </div> <br><br>
-                        <div id = 'pwLabel' class = 'pwLabel'> 비밀번호   :  <input type = "text" name="password"></div><br><br>
-                        <div class = "row">
-                            <div class = "col"><input type="submit" value = "로그인" class="w-100 btn btn-primary btn-lg" ></div>
-                            <div class = "col"><input type="reset" value = "초기화" class="w-100 btn btn-primary btn-lg" ></div>
-                    <div class = "col"><button type ="button" id = "register" class="w-100 btn btn-primary btn-lg"
-                                               onClick="location.href='/main/register'">회원가입</button></div>
-                </div>
+                <table class = 'table'>
+                    <thead>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div id = 'idLabel' class = 'idLabel'> 아이디</div>
+                            </td>
+                            <td colspan="2" style = 'width : 80%'>
+                                <input type = "text" name="id">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div id = 'pwLabel' class = 'pwLabel'> 비밀번호 </div>
+                            </td>
+                            <td colspan="2" style = 'width : 80%'>
+                                <input type = "text" name="password">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="submit" value = "로그인" class="w-100 btn btn-primary btn-lg" >
+                            </td>
+                            <td>
+                                <input type="reset" value = "초기화" class="w-100 btn btn-primary btn-lg" >
+                            </td>
+                            <td>
+                                <button type ="button" id = "register" class="w-100 btn btn-primary btn-lg"
+                                        onClick="location.href='/main/register'">회원가입</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </form>
         </div>
 </body>
