@@ -17,7 +17,7 @@
         <tbody>
             <tr>
                 <td>순번</td>
-                <td><input type = "text" th:value ="${board.seq}"/></td>
+                <td><input type = "text" th:value ="${board.seq}" readonly/></td>
             </tr>
             <tr>
                 <td>제목</td>
@@ -29,11 +29,11 @@
             </tr>
             <tr>
                 <td>작성자</td>
-                <td><input type = "text" th:value ="${board.id}"/></td>
+                <td><input type = "text" th:value ="${board.id}" readonly/></td>
             </tr>
             <tr>
                 <td>사진명</td>
-                <td><input type = "text" th:value ="${board.fileName}"/></td>
+                <td><input type = "text" th:value ="${board.fileName}" readonly/></td>
             </tr>
             <tr>
                 <td colspan="2">
