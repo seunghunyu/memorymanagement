@@ -34,7 +34,10 @@
 
             });
             function popUpLogin(){
-              window.open("/main","로그인","width=300, height=300");
+              window.open("/main","로그인","width=600, height=500");
+            }
+            function popUpSignIn(){
+              window.open("/main/register","회원가입","width=600, height=500");
             }
   </script>
   <body>
@@ -70,7 +73,7 @@
                   </ul>
                 </li>
                 <li><a href = "#" onclick="popUpLogin();">로그인</a></li>
-                <li><a>회원가입</a></li>
+                <li><a href = "#" onclick="popUpSignIn();">회원가입</a></li>
               </ul>
             </div>
           </div>
