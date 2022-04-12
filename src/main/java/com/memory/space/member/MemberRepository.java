@@ -1,5 +1,6 @@
 package com.memory.space.member;
 
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import java.util.List;
 
 @Repository   //
 @Transactional(readOnly = true)
+@Slf4j
 public class MemberRepository {
     Logger logger = LoggerFactory.getLogger(this.getClass());
     @Autowired
@@ -64,6 +66,25 @@ public class MemberRepository {
             }
             jdbcTemplate.update(sql, id, username, password);
             return "success";
+        }catch(Exception e){
+            e.printStackTrace();
+            return "failed";
+        }
+    }
+
+    //로그인이력
+    public String insertHist(String id){
+        String sel_nm_qry = "SELECT USERNAME FROM MEMBER WHERE ID = ? ";
+        String inst_qry = "INSERT INTO LOGIN_HIST(ID, NAME, LOGIN_DT) VALUES(?, ?, sysdate)";
+        try{
+            String username = jdbcTemplate.queryForObject(sel_nm_qry,String.class,id);
+            if(username.equals("")) {
+                jdbcTemplate.update(inst_qry, id, username);
+                return "success";
+            }else{
+                log.info("존재 하지 않는 회원입니다.");
+                return "failed";
+            }
         }catch(Exception e){
             e.printStackTrace();
             return "failed";

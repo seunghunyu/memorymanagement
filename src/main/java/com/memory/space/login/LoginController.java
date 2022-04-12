@@ -54,6 +54,7 @@ public class LoginController {
             return "redirect:/main";
         }else{
             session.setAttribute("loginId",member.getId());
+            memberRepository.insertHist(id);
         }
 
         logger.info("로그인ID : "+(String)session.getAttribute("loginId"));
@@ -88,7 +89,7 @@ public class LoginController {
         return "redirect:main";
     }
     //로그인 이력
-    public String insertHist(){
+    public String insertHist(String id){
 
         return "true";
     }
