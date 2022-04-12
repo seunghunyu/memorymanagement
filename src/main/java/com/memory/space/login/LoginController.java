@@ -87,4 +87,9 @@ public class LoginController {
         }
         return "redirect:main";
     }
+    //로그인 이력
+    public String insertHist(){
+
+        return "true";
+    }
 }
