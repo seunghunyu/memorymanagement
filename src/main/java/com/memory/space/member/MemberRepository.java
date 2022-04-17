@@ -82,7 +82,7 @@ public class MemberRepository {
                 jdbcTemplate.update(inst_qry, id, username);
                 return "success";
             }else{
-                log.info("존재 하지 않는 회원입니다.");
+                log.info("존재 하지 않는 회원입니다. 아이디를 확인해주세요.");
                 return "failed";
             }
         }catch(Exception e){
