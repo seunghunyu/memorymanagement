@@ -31,8 +31,9 @@
         console.log("페이징 처리 : "+pageCnt);
     });
 </script>
-<h1 th:text="${session.loginId}"></h1>님 로그인 중입니다. <br><br>
 <div class = "container" style = "max-width: 600px">
+
+    <div th:text="${session.loginId}"></div>
     <div class = "py-5 text-center">
         <h2>게시판</h2>
     </div>
