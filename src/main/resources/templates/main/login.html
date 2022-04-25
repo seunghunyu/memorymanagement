@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th = "http://www.thymeleaf.org">
+<html xmlns:th = "http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
     <meta charset="UTF-8">
         <link th:href="@{/static/css/bootstrap.css}"
@@ -18,11 +18,14 @@
                 if(errMsg != null && errMsg != ""){
                     alert(errMsg);
                 }
+
             });
 
 <!--            document.addEventListener("DOMContentLoaded", function(){      -->
 <!--            });-->
         </script>
+        <th:block th:replace="fragments/header :: headerFragment"></th:block>
+        <th:block th:replace="fragments/navigator :: navigatorFragment"></th:block>
         <div class = "container" style = "max-width: 600px; padding-left : 100px">
             <div class = "py-5 text-center">
                 <h1 class = "h1" >TOY PROJECT</h1>
@@ -65,5 +68,6 @@
                 </table>
             </form>
         </div>
+        <th:block th:replace="fragments/footer :: footerFragment"></th:block>
 </body>
 </html>
