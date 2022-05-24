@@ -24,8 +24,8 @@
 <!--            document.addEventListener("DOMContentLoaded", function(){      -->
 <!--            });-->
         </script>
-        <th:block th:replace="fragments/header :: headerFragment"></th:block>
-        <th:block th:replace="fragments/navigator :: navigatorFragment"></th:block>
+        <!--<th:block th:replace="fragments/header :: headerFragment"></th:block> -->
+        <!--<th:block th:replace="fragments/navigator :: navigatorFragment"></th:block> -->
         <div class = "container" style = "max-width: 600px; padding-left : 100px">
             <div class = "py-5 text-center">
                 <h1 class = "h1" >TOY PROJECT</h1>
@@ -68,6 +68,8 @@
                 </table>
             </form>
         </div>
-        <th:block th:replace="fragments/footer :: footerFragment"></th:block>
+        <div style = "position: absolute; right: 0px; bottom: 0px; margin-right : 50px">
+            <th:block th:replace="fragments/footer :: footerFragment"></th:block>
+        </div>
 </body>
 </html>
