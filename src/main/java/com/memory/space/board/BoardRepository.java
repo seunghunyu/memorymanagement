@@ -48,7 +48,7 @@ public class BoardRepository {
     };
     //게시글모두 불러오기
     public List<Board> findByAll(Integer startNum, int totalCnt){
-        int pageBoardCnt = 5; // 한 페이지에 5개씩 보여야함
+        int pageBoardCnt = 10; // 한 페이지에 5개씩 보여야함
         int start;
         int end;
 

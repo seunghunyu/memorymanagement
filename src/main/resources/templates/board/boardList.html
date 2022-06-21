@@ -37,14 +37,14 @@
     <div class = "py-5 text-center">
         <h2>게시판</h2>
     </div>
-    <table class = "table" style = "width : 900px; padding-right : 100px;">
+    <table class = "table" style = "width : 900px; padding-right : 50px;">
         <thead>
         <tr>
             <th style = "width : 50px;">번호</th>
-            <th style = "width : 100px;">제목</th>
-            <th style = "width : 300px;">설명</th>
+            <th style = "width : 200px;text-overflow:ellipsis;">제목</th>
+            <th style = "width : 300px;">내용</th>
             <th style = "width : 50px;">아이디</th>
-            <th style = "width : 50px;">작성자명</th>
+            <!--<th style = "width : 50px;">작성자명</th>-->
             <th style = "width : 50px;">수정일자</th>
         </tr>
         </thead>
@@ -54,15 +54,15 @@
             <td><a th:href="@{/board/detail/{boardSeq}(boardSeq=${board.seq})}" th:text="${board.title}"></a></td>
             <td th:text="${board.content}"></td>
             <td th:text="${board.id}"></td>
-            <td th:text="${board.username}"></td>
+            <!-- <td th:text="${board.username}"></td> -->
             <td th:text="${board.updateDate}"></td>
         </tr>
     </tbody>
     </table>
-    <div class = "row"><button type ="button" id = "register" class="w-100 btn btn-primary btn-lg"
+    <div class = ""><button type ="button" id = "register" class="w-100 btn btn-primary btn-lg"
             onClick="location.href='/board/registerForm'">게시글 작성</button>
     </div>
-    <div class = "row">
+    <div class = "">
         <div id = "pageCnt"></div>
     </div>
 </div>
