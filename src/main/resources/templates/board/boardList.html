@@ -49,15 +49,15 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="board : ${boardList}">
-            <td><a th:href="@{/board/detail/{boardSeq}(boardSeq=${board.seq})}" th:text="${board.seq}"></a></td>
-            <td><a th:href="@{/board/detail/{boardSeq}(boardSeq=${board.seq})}" th:text="${board.title}"></a></td>
-            <td th:text="${board.content}"></td>
-            <td th:text="${board.id}"></td>
-            <!-- <td th:text="${board.username}"></td> -->
-            <td th:text="${board.updateDate}"></td>
-        </tr>
-    </tbody>
+            <tr th:each="board : ${boardList}">
+                <td><a th:href="@{/board/detail/{boardSeq}(boardSeq=${board.seq})}" th:text="${board.seq}"></a></td>
+                <td><a th:href="@{/board/detail/{boardSeq}(boardSeq=${board.seq})}" th:text="${board.title}"></a></td>
+                <td th:text="${board.content}"></td>
+                <td th:text="${board.id}"></td>
+                <!-- <td th:text="${board.username}"></td> -->
+                <td th:text="${board.updateDate}"></td>
+            </tr>
+        </tbody>
     </table>
     <div class = ""><button type ="button" id = "register" class="w-100 btn btn-primary btn-lg"
             onClick="location.href='/board/registerForm'">게시글 작성</button>
