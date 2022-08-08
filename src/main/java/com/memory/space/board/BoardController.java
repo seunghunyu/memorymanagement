@@ -164,4 +164,10 @@ public class BoardController {
         }
     }
 
+    //내가 등록한 게시글로 이동
+    @GetMapping("/myBoard")
+    public String myBoard(){
+        logger.info("내가 등록한 게시글 목록으로 이동!!");
+        return "my/myBoard";
+    }
 }

@@ -18,4 +18,17 @@ public class HomeController {
         logger.info("home 화면");
         return "home/home";
     }
+    //로그인 사용자정보 변경 및 확인 페이지
+    @GetMapping("/myInfo")
+    public String myInfo(){
+        logger.info("사용자정보 변경 및 확인 페이지로 이동!!");
+        return "my/myInfo";
+    }
+
+    //로그인 사용자 비밀번호 변경
+    @GetMapping("/myPassword")
+    public String myPassword(){
+        logger.info("비밀번호 변경 페이지로 이동!!");
+        return "my/myPassword";
+    }
 }
