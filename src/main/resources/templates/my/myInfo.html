@@ -57,22 +57,21 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
+                <li class="active"><a href="/home">Home</a></li>
                 <li><a href="#about">About</a></li>
-                <li><a href="#contact"><img th:src="@{/static/img/icon/dodbogi.PNG}"></a></li>
+                <li><a href="#contact">Contact</a></li>
                 <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">My Page <span class="caret"></span></a>
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
                   <ul class="dropdown-menu" role="menu">
-                    <li><a href="#">내 정보</a></li>
-                    <li><a href="#">비밀번호 변경</a></li>
-                    <li><a href="#">내가 등록한 게시글</a></li>
+                    <li><a href="/home/myInfo">내 정보</a></li>
+                    <li><a href="/home/myPassword">비밀번호 변경</a></li>
+                    <li><a href="/board/myBoard">내가 등록한 게시글</a></li>
                     <li class="divider"></li>
                     <li class="dropdown-header">Nav header</li>
-                    <li><a href="#">Separated link</a></li>
-                    <li><a href="#">One more separated link</a></li>
+                    <li><a href="#">임시링크1</a></li>
+                    <li><a href="#">임시링크2</a></li>
                   </ul>
                 </li>
-
                 <li><a href = "#" onclick="popUpLogin();">로그인</a></li>
                 <li><a href = "#" onclick="popUpSignIn();">회원가입</a></li>
               </ul>
