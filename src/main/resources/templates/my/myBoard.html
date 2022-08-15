@@ -7,8 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" th:href="@{/static/img/puzzle.ico}">
-    <link th:href="@{/static/css/bootstrap.min.css}"
-          href="../css/bootstrap.min.css" rel="stylesheet">
+
     <title>내가 쓴 게시글</title>
     <script th:src="@{/static/js/jquery-3.6.0.js}"></script>
     <!-- Bootstrap core CSS
@@ -140,17 +139,18 @@
     ================================================== -->
     <!-- Wrap the rest of the page in another container to center all the content. -->
 
-    <div class="container marketing">
+    <!-- <div class="container marketing"> -->
 
+    <div class="container marketing">
       <!-- Three columns of text below the carousel -->
+      <p>된장찌개지옥..</p>
       <div class="row">
-        <table class = "table" style = "width : 900px; padding-right : 50px;">
+        <!-- <table class = "table" style = "width : 900px; padding-right : 50px;"> -->
+        <table class = "table" style = "display: flex; justify-content: center;">
           <tbody>
             <tr th:each="board : ${boardList}">
               <!--<td><a th:href="@{/board/detail/{boardSeq}(boardSeq=${board.seq})}" th:text="${board.seq}"></a></td>-->
               <!--<td><a th:href="@{/board/detail/{boardSeq}(boardSeq=${board.seq})}" th:text="${board.title}"></a></td>-->
-              <td><img th:src="@{/static/img/jungsuyong/jjigae.PNG}"></td>
-              <td><img th:src="@{/static/img/jungsuyong/jjigae.PNG}"></td>
               <td><img th:src="@{/static/img/jungsuyong/jjigae.PNG}"></td>
               <td><img th:src="@{/static/img/jungsuyong/jjigae.PNG}"></td>
               <td><img th:src="@{/static/img/jungsuyong/jjigae.PNG}"></td>

@@ -58,14 +58,6 @@ public class BoardController {
         double totalCnt = boardRepository.boardCount();
         List<Board> boardList = boardRepository.findByAll(pageNum , (int)totalCnt);
 
-        /*
-        if(boardList.size() > 0){
-            for(int i=0;i<boardList.size();i++){
-                logger.info(boardList.get(i).toString());
-            }
-        }
-        */
-
         String pageCnt = Integer.toString((int)Math.ceil(totalCnt / 5));
         model.addAttribute("boardList",boardList);
         model.addAttribute("pageCnt",pageCnt);
@@ -166,7 +158,13 @@ public class BoardController {
 
     //내가 등록한 게시글로 이동
     @GetMapping("/myBoard")
-    public String myBoard(){
+    public String myBoard(Model model){
+        int pageNum = 1;  //임시로 세팅
+        double totalCnt = boardRepository.boardCount();
+        List<Board> boardList = boardRepository.findByAll(pageNum , (int)totalCnt);
+
+        String pageCnt = Integer.toString((int)Math.ceil(totalCnt / 5));
+        model.addAttribute("boardList",boardList);
         logger.info("내가 등록한 게시글 목록으로 이동!!");
         return "my/myBoard";
     }
