@@ -168,4 +168,17 @@ public class BoardController {
         logger.info("내가 등록한 게시글 목록으로 이동!!");
         return "my/myBoard";
     }
+
+    //내가 등록한 게시글로 이동
+    @GetMapping("/pictureBoard")
+    public String pictureBoard(Model model){
+        //int pageNum = 1;  //임시로 세팅
+        //double totalCnt = boardRepository.boardCount();
+        //List<Board> boardList = boardRepository.findByAll(pageNum , (int)totalCnt);
+
+        //String pageCnt = Integer.toString((int)Math.ceil(totalCnt / 5));
+        //model.addAttribute("boardList",boardList);
+        logger.info("pictureBoard 상세보기 화면으로 이동!!");
+        return "pictureBoard/board";
+    }
 }
