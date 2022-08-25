@@ -147,16 +147,13 @@
         <!-- <table class = "table" style = "width : 900px; padding-right : 50px;"> -->
         <table class = "table" style = "display: flex; justify-content: center;">
           <tbody>
-            <tr th:each="board : ${boardList}">
-              <!--<td><a th:href="@{/board/detail/{boardSeq}(boardSeq=${board.seq})}" th:text="${board.seq}"></a></td>-->
-              <!--<td><a th:href="@{/board/detail/{boardSeq}(boardSeq=${board.seq})}" th:text="${board.title}"></a></td>-->
-              <td><img th:src="@{/static/img/jungsuyong/jjigae.PNG}"></td>
-              <td><img th:src="@{/static/img/jungsuyong/jjigae.PNG}"></td>
-              <td><img th:src="@{/static/img/jungsuyong/jjigae.PNG}"></td>
+            <tr>
+              <td>내용</td>
+              <td>사진(임시)</td>
             </tr>
           </tbody>
         </table>
-      </div><!-- /.row -->
+      </div>
 
 
       <!-- START THE FEATURETTES -->
