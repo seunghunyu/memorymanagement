@@ -31,4 +31,18 @@ public class HomeController {
         logger.info("비밀번호 변경 페이지로 이동!!");
         return "my/myPassword";
     }
+
+    //about
+    @GetMapping("/about")
+    public String about(){
+        logger.info("페이지 설명 페이지로 이동!!");
+        return "home/about";
+    }
+
+    //contact
+    @GetMapping("/contact")
+    public String contact(){
+        logger.info("계약 설명 페이지로 이동!!");
+        return "home/contact";
+    }
 }
