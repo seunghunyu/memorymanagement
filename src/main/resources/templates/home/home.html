@@ -46,6 +46,10 @@
                $('#content').load(pagePath);
             }
 
+            function goFoodList(menu){
+               alert(menu);
+            }
+
   </script>
   <body>
     <div class="navbar-wrapper">
@@ -154,7 +158,7 @@
           <img class="img-circle" th:src="@{/static/img/icon/restaurant.PNG}" alt="Generic placeholder image" style="width: 140px; height: 140px;">
           <h2>음식점</h2>
           <p>지역별 음식 소개 </p>
-          <p><a class="btn btn-default" href="#" role="button">음식점 정보 보러가기 &raquo;</a></p>
+          <p><a class="btn btn-default" onclick="goFoodList('식당')" role="button">음식점 정보 보러가기 &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
           <img class="img-circle" th:src="@{/static/img/icon/cafe.PNG}" alt="Generic placeholder image" style="width: 140px; height: 140px;">
