@@ -52,7 +52,9 @@
                //$('#content').load('/list/'+menu);
                $.ajax({
                     url: "/restaurant/list",
-                    data: menu,
+                    data: {
+                      name : menu
+                    },
                     type:"POST",
                     cache: false
                 }).done(function (fragment) {
