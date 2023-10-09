@@ -4,6 +4,7 @@ import com.memory.space.member.Member;
 import com.memory.space.member.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.Value;
+import org.apache.catalina.filters.RemoteIpFilter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/main")
@@ -26,7 +29,7 @@ public class LoginController {
     //main 로그인 화면 이동
     @GetMapping
     public String goMain(){
-        logger.info("로그인 page");
+        logger.info("login page");
         return "main/login";
     }
 
@@ -37,30 +40,33 @@ public class LoginController {
                         @RequestParam("password") String password,
                         RedirectAttributes redirectAttributes,
                         Model model){
-        logger.info("login!!");
+        logger.info("loginGo!!");
         logger.info("id:"+id+"    password:"+password);
 
-        String validId = "";
 
 //      List<Member> memberList = memberRepository.findByAll();
         Member member = memberRepository.findById(id,password);
+        String validId = "";
         //멤버출력
         if(member==null){
-            logger.info("등록 되지 않은 회원입니다.");
-            redirectAttributes.addAttribute("login_fail","등록 되지 않은 회원입니다.");
-            //model.addAttribute("login_fail","등록 되지 않은 회원입니다.");
-            //model.addAttribute("err","asd");
-            //logger.info("login_fail :::"+model.getAttribute("login_fail").toString());
-            return "redirect:/main";
+            logger.info("@@@@not register member!!!!!");
+//            redirectAttributes.addAttribute("result","login_fail"); //GET 방식으로 URI 뒤에 붙어서 전달
+//            Map<String,String> resultMap = new HashMap<>();
+//            resultMap.put("result", "login_fail");
+//            redirectAttributes.addFlashAttribute(resultMap);
+            redirectAttributes.addFlashAttribute("result","login_fail");  //POST 방식처럼 URI에 보여지지 않으며 휘발성
+//            return "redirect:/home";
+            return "redirect:/home";
+//            return "home/home";
+//            return "forward:/home/loginHome";
         }else{
             session.setAttribute("loginId",member.getId());
             memberRepository.insertHist(id);
+            redirectAttributes.addFlashAttribute("result","login_success");
+            logger.info("@@@@LOGIN ID : "+(String)session.getAttribute("loginId"));
+            return "/home";
+
         }
-
-        logger.info("로그인ID : "+(String)session.getAttribute("loginId"));
-
-        return "redirect:/board";
-        //redirect 안붙이면 405에러...왜일까....
     }
 
     //회원가입 페이지 이동
@@ -90,7 +96,6 @@ public class LoginController {
     }
     //로그인 이력
     public String insertHist(String id){
-
         return "true";
     }
 }

@@ -31,7 +31,18 @@
 ================================================== -->
   <script th:inline="javascript">
             $(document).ready(function(){
-
+                 var result = '<th:text="${param.result}"/>';
+                 console.log(result);
+                 var result2 = '${param.result}';
+                 console.log(result2);
+                 var result3 = '${result}';
+                 console.log(result3);
+                 /*
+                 if(result.equals("login_fail")){
+                    alert("로그인 실패");
+                 }else{
+                    alert(" 홈 입니다.");
+                 }*/
             });
             function popUpLogin(){
               window.open("/main","로그인","width=600, height=500");
@@ -95,8 +106,8 @@
                     <li><a href="#" onclick="changeMainPage('/home/myInfo');">content바꾸기</a></li>
                   </ul>
                 </li>
-                <li><a href = "#" onclick="changeMainPage('/main');">로그인</a></li>
-                <li><a href = "#" onclick="changeMainPage('/main/register');">회원가입</a></li>
+                <li><a onclick="changeMainPage('/main');">로그인</a></li>
+                <li><a onclick="changeMainPage('/main/register');">회원가입</a></li>
                 <!--<li><a href = "#" onclick="popUpLogin();">로그인</a></li>
                 <li><a href = "#" onclick="popUpSignIn();">회원가입</a></li>-->
               </ul>

@@ -11,7 +11,7 @@
     <title>회원가입</title>
     <script th:src="@{/static/js/jquery-3.6.0.js}"></script>
     <link rel="stylesheet" th:href="@{/static/dist/css/bootstrap.min.css}">
-
+    <link rel="stylesheet" th:href="@{/static/custom/css/custom.css}">
     <script th:src="@{/static/assets/js/ie8-responsive-file-warning.js}"></script>
     <script th:src="@{/static/assets/js/ie-emulation-modes-warning.js}"></script>
     <link th:href="@{/static/css/carousel.css}" rel="stylesheet">
@@ -24,20 +24,26 @@
            <table class = "table">
                <tbody>
                     <tr>
-                        <td>아이디</td>
-                        <td><input type = "text" name="id"></td>
+                        <td>
+                            <div id = 'idLabel' class = 'customInputLabel'> 아이디</div>
+                        </td>
+                        <td colspan="2" style = 'width : 80%'><input type = "text" class = 'customInput' name="id" placeholder="아이디를 입력하세요."></td>
                     </tr>
                     <tr>
-                        <td>이름</td>
-                        <td><input type = "text" name="username"></td>
+                        <td>
+                            <div class = 'customInputLabel'> 이름 </div>
+                        </td>
+                        <td colspan="2" style = 'width : 80%'><input type = "text" class = 'customInput' name="username" placeholder="이름을 입력하세요."></td>
                     </tr>
                     <tr>
-                        <td>비밀번호</td>
-                        <td><input type = "text" name="password"></td>
+                        <td>
+                            <div class = 'customInputLabel'> 비밀번호 </div>
+                        </td>
+                        <td colspan="2" style = 'width : 80%'><input type = "text" class = 'customInput' name="password" placeholder="비밀번호를 입력하세요."></td>
                     </tr>
                     <tr>
-                        <td><input class="w-100 btn btn-primary btn-lg" type="reset" value = "초기화"></td>
-                        <td><button class="w-100 btn btn-primary btn-lg" id = "register">회원가입</button></td>
+                        <td><input class="w-100 btn btn-warning btn-lg" type="reset" value = "초기화"></td>
+                        <td><button class="w-100 btn btn-info btn-lg" id = "register">회원가입</button></td>
                     </tr>
                </tbody>
            </table>
