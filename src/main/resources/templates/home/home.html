@@ -81,8 +81,8 @@
             <div id="navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
                 <li class="active"><a href="/home">Home</a></li>
-                <li><a data-transition="flip" onclick="changeMainPage('/home/about');">About</a></li>
-                <li><a data-transition="fade" onclick="changeMainPage('/home/contact');">Contact</a></li>
+                <li class="active"><a onclick="changeMainPage('/home/about');">About</a></li>
+                <li class="active"><a onclick="changeMainPage('/home/contact');">Contact</a></li>
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
                   <ul class="dropdown-menu" role="menu">
@@ -95,8 +95,10 @@
                     <li><a href="#" onclick="changeMainPage('/home/myInfo');">content바꾸기</a></li>
                   </ul>
                 </li>
-                <li><a href = "#" onclick="popUpLogin();">로그인</a></li>
-                <li><a href = "#" onclick="popUpSignIn();">회원가입</a></li>
+                <li><a href = "#" onclick="changeMainPage('/main');">로그인</a></li>
+                <li><a href = "#" onclick="changeMainPage('/main/register');">회원가입</a></li>
+                <!--<li><a href = "#" onclick="popUpLogin();">로그인</a></li>
+                <li><a href = "#" onclick="popUpSignIn();">회원가입</a></li>-->
               </ul>
             </div>
           </div>
