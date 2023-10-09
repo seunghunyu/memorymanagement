@@ -31,18 +31,16 @@
 ================================================== -->
   <script th:inline="javascript">
             $(document).ready(function(){
-                 var result = '<th:text="${param.result}"/>';
+                 //[[${result}]] 가 없는 변수인 경우 ""으로 값 할당
+                 let result = /*[[${result}]]*/"";
                  console.log(result);
-                 var result2 = '${param.result}';
-                 console.log(result2);
-                 var result3 = '${result}';
-                 console.log(result3);
-                 /*
-                 if(result.equals("login_fail")){
+
+                 if(result == "login_fail"){
                     alert("로그인 실패");
+                    changeMainPage("/main");
                  }else{
                     alert(" 홈 입니다.");
-                 }*/
+                 }
             });
             function popUpLogin(){
               window.open("/main","로그인","width=600, height=500");

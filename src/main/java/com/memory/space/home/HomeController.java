@@ -15,14 +15,12 @@ public class HomeController {
     Logger logger = LoggerFactory.getLogger(this.getClass());
     //main 로그인 화면 이동
     @GetMapping
-    public String home(Model model, @RequestParam(value = "result", required = false) Object result){
+    public String home(Model model){
 //    public String home(@ModelAttribute Object result){
         logger.info("default main home page entrance!");
-        logger.info(result == null ? "result is null" : result.toString());
-
         if(model.asMap() != null){
-            String result2 = (String)model.asMap().get("result");
-            logger.info("result2 ::"+result2);
+            String result = (String)model.asMap().get("result");
+            logger.info("result ::"+result);
         }
 //        logger.info(pathVar);
 //        logger.info(redirectAttributes.getAttribute("result") == null ? "null"  : redirectAttributes.getAttribute("result").toString());
