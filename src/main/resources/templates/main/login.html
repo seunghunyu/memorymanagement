@@ -11,7 +11,7 @@
     <title>로그인</title>
     <script th:src="@{/static/js/jquery-3.6.0.js}"></script>
     <link rel="stylesheet" th:href="@{/static/dist/css/bootstrap.min.css}">
-
+    <link rel="stylesheet" th:href="@{/static/custom/css/custom.css}">
     <script th:src="@{/static/assets/js/ie8-responsive-file-warning.js}"></script>
     <script th:src="@{/static/assets/js/ie-emulation-modes-warning.js}"></script>
     <link th:href="@{/static/css/carousel.css}" rel="stylesheet">
@@ -51,7 +51,8 @@
         <!--<th:block th:replace="fragments/navigator :: navigatorFragment"></th:block> -->
         <div class = "container" style = "max-width: 600px; padding-left : 100px">
             <div class = "py-5 text-center">
-                <h1 class = "h1" >TOY PROJECT</h1>
+                <!--<h1 class = "h1" >TOY PROJECT</h1>-->
+                <h1 class = "h1" >로그인 정보</h1>
             </div>
 
             <form action = "/main/loginGo" id = "login_info" method = "post">
@@ -61,18 +62,18 @@
                     <tbody>
                         <tr>
                             <td>
-                                <div id = 'idLabel' class = 'idLabel'> 아이디</div>
+                                <div id = 'idLabel' class = 'customInputLabel'> 아이디</div>
                             </td>
                             <td colspan="2" style = 'width : 80%'>
-                                <input type = "text" name="id">
+                                <input class = 'customInput' type = "text" name="id" placeholder="아이디를 입력하세요.">
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <div id = 'pwLabel' class = 'pwLabel'> 비밀번호 </div>
+                                <div id = 'pwLabel' class = 'customInputLabel'> 비밀번호 </div>
                             </td>
                             <td colspan="2" style = 'width : 80%'>
-                                <input type = "password" name="password">
+                                <input class = 'customInput' type = "password" name="password" placeholder="비밀번호를 입력하세요.">
                             </td>
                         </tr>
                         <tr>
@@ -80,11 +81,11 @@
                                 <input type="submit" value = "로그인" class="w-100 btn btn-primary btn-lg" >
                             </td>
                             <td>
-                                <input type="reset" value = "초기화" class="w-100 btn btn-primary btn-lg" >
+                                <input type="reset" value = "초기화" class="w-100 btn btn-warning btn-lg" style="width:100%;">
                             </td>
                             <td>
-                                <button type ="button" id = "register" class="w-100 btn btn-primary btn-lg"
-                                        onClick="location.href='/main/register'">회원가입</button>
+                                <button type ="button" id = "register" class="w-100 btn btn-info btn-lg"
+                                        onClick="location.href='/main/register'" style="width:100%;">회원가입</button>
                             </td>
                         </tr>
                     </tbody>

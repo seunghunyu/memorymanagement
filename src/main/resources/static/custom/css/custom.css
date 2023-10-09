@@ -1,0 +1,13 @@
+.customInputLabel {
+  margin-top: 10px;
+}
+
+.customInput {
+  background-color: #eee;
+  border: none;
+  padding: 10px 15px;
+  width: 100%;
+  border-radius: 5px;
+}
+
+.button
