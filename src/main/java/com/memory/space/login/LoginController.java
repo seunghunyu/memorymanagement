@@ -64,7 +64,7 @@ public class LoginController {
             memberRepository.insertHist(id);
             redirectAttributes.addFlashAttribute("result","login_success");
             logger.info("@@@@LOGIN ID : "+(String)session.getAttribute("loginId"));
-            return "/home";
+            return "redirect:/home";
 
         }
     }
