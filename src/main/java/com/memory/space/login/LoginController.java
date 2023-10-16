@@ -60,9 +60,12 @@ public class LoginController {
 //            return "home/home";
 //            return "forward:/home/loginHome";
         }else{
+
             session.setAttribute("loginId",member.getId());
             memberRepository.insertHist(id);
             redirectAttributes.addFlashAttribute("result","login_success");
+            redirectAttributes.addFlashAttribute("loginId",member.getId());
+            redirectAttributes.addFlashAttribute("userName",member.getUsername());
             logger.info("@@@@LOGIN ID : "+(String)session.getAttribute("loginId"));
             return "redirect:/home";
 

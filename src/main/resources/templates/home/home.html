@@ -13,7 +13,7 @@
     <!-- Bootstrap core CSS
     <link href="../../dist/css/bootstrap.min.css" rel="stylesheet"> -->
     <link rel="stylesheet" th:href="@{/static/dist/css/bootstrap.min.css}">
-
+    <link rel="stylesheet" th:href="@{/static/custom/css/custom.css}">
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script th:src="@{/static/assets/js/ie8-responsive-file-warning.js}"></script><![endif]-->
     <script th:src="@{/static/assets/js/ie-emulation-modes-warning.js}"></script>
@@ -33,6 +33,8 @@
             $(document).ready(function(){
                  //[[${result}]] 가 없는 변수인 경우 ""으로 값 할당
                  let result = /*[[${result}]]*/"";
+                 let loginId = /*[[${loginId}]]*/"";
+                 let loginName = /*[[${userName}]]*/"";
                  console.log(result);
 
                  if(result == "login_fail"){
@@ -40,10 +42,14 @@
                     changeMainPage("/main");
                  }else if(result == "login_success"){
                     console.log("Home 로그인 성공");
+
+                    $('#logInInfo').css('visibility','visible');
+                    $('#logInInfo').html(loginName + '님 로그인중입니다.');
                     $('#logInBannerButton').css('visibility','hidden');
                     $('#logOutBannerButton').css('visibility','visible');
                     $('#registerBannerButton').css('right','0px');
                  }else{
+                    $('#logInInfo').css('visibility','hidden');
                     $('#logInBannerButton').css('visibility','visible');
                     $('#logOutBannerButton').css('visibility','hidden');
                     $('#registerBannerButton').css('right','100px');
@@ -113,6 +119,7 @@
                     <li><a href="#" onclick="changeMainPage('/home/myInfo');">content바꾸기</a></li>
                   </ul>
                 </li>
+                <li><label id="logInInfo" class=loginLabel></label></li>
                 <li><a id="logInBannerButton" onclick="changeMainPage('/main');">로그인</a></li>
                 <li><a id="logOutBannerButton" onclick="changeMainPage('/main');">로그아웃</a></li>
                 <li><a id="registerBannerButton" onclick="changeMainPage('/main/register');">회원가입</a></li>

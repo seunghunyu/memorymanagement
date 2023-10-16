@@ -20,7 +20,9 @@ public class HomeController {
         logger.info("default main home page entrance!");
         if(model.asMap() != null){
             String result = (String)model.asMap().get("result");
-            logger.info("result ::"+result);
+            String userId = (String)model.asMap().get("loginId");
+            String userName = (String)model.asMap().get("userName");
+            logger.info("result = {} , loginId = {} , userName = {}", result,userId,userName);
         }
 //        logger.info(pathVar);
 //        logger.info(redirectAttributes.getAttribute("result") == null ? "null"  : redirectAttributes.getAttribute("result").toString());

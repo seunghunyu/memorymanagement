@@ -10,4 +10,7 @@
   border-radius: 5px;
 }
 
-.button
+.loginLabel {
+  margin-top : 15px;
+  color : aliceblue;
+}
