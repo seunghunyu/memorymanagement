@@ -62,10 +62,12 @@ public class LoginController {
         }else{
 
             session.setAttribute("loginId",member.getId());
+            session.setAttribute("userName",member.getUsername());
+            session.setAttribute("result", "login_success");
             memberRepository.insertHist(id);
-            redirectAttributes.addFlashAttribute("result","login_success");
-            redirectAttributes.addFlashAttribute("loginId",member.getId());
-            redirectAttributes.addFlashAttribute("userName",member.getUsername());
+//            redirectAttributes.addFlashAttribute("result","login_success");
+//            redirectAttributes.addFlashAttribute("loginId",member.getId());
+//            redirectAttributes.addFlashAttribute("userName",member.getUsername());
             logger.info("@@@@LOGIN ID : "+(String)session.getAttribute("loginId"));
             return "redirect:/home";
 

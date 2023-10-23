@@ -8,6 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 @RequestMapping("/home")
 @RequiredArgsConstructor
@@ -15,14 +17,20 @@ public class HomeController {
     Logger logger = LoggerFactory.getLogger(this.getClass());
     //main 로그인 화면 이동
     @GetMapping
-    public String home(Model model){
+    public String home(HttpSession session, Model model){
 //    public String home(@ModelAttribute Object result){
         logger.info("default main home page entrance!");
-        if(model.asMap() != null){
-            String result = (String)model.asMap().get("result");
-            String userId = (String)model.asMap().get("loginId");
-            String userName = (String)model.asMap().get("userName");
-            logger.info("result = {} , loginId = {} , userName = {}", result,userId,userName);
+//        if(model.asMap() != null){
+        if(session.getAttribute("loginId") != null && !session.getAttribute("loginId").equals("")){
+//            String result = (String)model.asMap().get("result");
+//            String userId = (String)model.asMap().get("loginId");
+//            String userName = (String)model.asMap().get("userName");
+//            logger.info("result = {} , loginId = {} , userName = {}", result,userId,userName);
+            logger.info("session result = {}, userId = {} , userName = {}",
+                    session.getAttribute("result"), session.getAttribute("loginId"), session.getAttribute("userName"));
+            model.addAttribute("result", session.getAttribute("result"));
+            model.addAttribute("loginId", session.getAttribute("loginId"));
+            model.addAttribute("userName", session.getAttribute("userName"));
         }
 //        logger.info(pathVar);
 //        logger.info(redirectAttributes.getAttribute("result") == null ? "null"  : redirectAttributes.getAttribute("result").toString());
