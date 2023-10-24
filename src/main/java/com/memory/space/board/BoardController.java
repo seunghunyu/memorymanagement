@@ -181,4 +181,11 @@ public class BoardController {
         logger.info("pictureBoard 상세보기 화면으로 이동!!");
         return "pictureBoard/board";
     }
+
+    @GetMapping("/addContentList")
+    public String addContentList(Model model){
+        logger.info("만들기 리스트");
+        return "board/addContentList";
+    }
+
 }

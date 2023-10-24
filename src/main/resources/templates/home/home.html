@@ -44,14 +44,15 @@
                     changeMainPage("/main");
                  }else if(result == "login_success"){
                     console.log("Home 로그인 성공");
-
                     $('#logInInfo').css('visibility','visible');
                     $('#logInInfo').html(loginName + '님 로그인중입니다.');
+                    $('#addContent').css('visibility','visible');
                     $('#logInBannerButton').css('visibility','hidden');
                     $('#logOutBannerButton').css('visibility','visible');
                     $('#registerBannerButton').css('right','0px');
                  }else{
                     $('#logInInfo').css('visibility','hidden');
+                    $('#addContent').css('visibility','hidden');
                     $('#logInBannerButton').css('visibility','visible');
                     $('#logOutBannerButton').css('visibility','hidden');
                     $('#registerBannerButton').css('right','100px');
@@ -70,6 +71,20 @@
                console.log('페이지 변경');
                $('#content').children().remove();
                $('#content').load(pagePath);
+            }
+
+            function addContentButton_Click(){
+              //var url = "/board/addContentList.html";
+              let url = "http://localhost:8085/board/addContentList"
+              let name = "";
+              let option = "width = 500, height = 500, top = 100, left = 400, location = no"
+              /*
+                location : 팝업창 URL 입력란 visible 여부 설정
+                toolbars : 팝업창 도구상자 visible 여부 설정
+                status   : 팝업창 상태 표시줄 visible 여부 설정
+              */
+
+              window.open(url, name, option);
             }
 
             function goFoodList(menu){
@@ -121,7 +136,8 @@
                     <li><a href="#" onclick="changeMainPage('/home/myInfo');">content바꾸기</a></li>
                   </ul>
                 </li>
-                <li><label id="logInInfo" class=loginLabel></label></li>
+                <li><label id="logInInfo" class="loginLabel"></label></li>
+                <li><button id="addContent" class="addButton" th:src="@{/static/img/button/addButton2.PNG}" onclick="addContentButton_Click()"></button></li>
                 <li><a id="logInBannerButton" onclick="changeMainPage('/main');">로그인</a></li>
                 <li><a id="logOutBannerButton" onclick="changeMainPage('/main');">로그아웃</a></li>
                 <li><a id="registerBannerButton" onclick="changeMainPage('/main/register');">회원가입</a></li>
