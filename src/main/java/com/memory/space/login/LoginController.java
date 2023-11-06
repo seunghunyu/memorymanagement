@@ -54,7 +54,8 @@ public class LoginController {
 //            Map<String,String> resultMap = new HashMap<>();
 //            resultMap.put("result", "login_fail");
 //            redirectAttributes.addFlashAttribute(resultMap);
-            redirectAttributes.addFlashAttribute("result","login_fail");  //POST 방식처럼 URI에 보여지지 않으며 휘발성
+//            redirectAttributes.addFlashAttribute("result","login_fail");  //POST 방식처럼 URI에 보여지지 않으며 휘발성
+            session.setAttribute("result", "login_fail");
 //            return "redirect:/home";
             return "redirect:/home";
 //            return "home/home";

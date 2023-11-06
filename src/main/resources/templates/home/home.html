@@ -69,6 +69,7 @@
 
             function changeMainPage(pagePath){
                console.log('페이지 변경');
+               addContentClose();
                $('#content').children().remove();
                $('#content').load(pagePath);
             }
@@ -295,40 +296,33 @@
 
     </div><!-- /.container -->
 
-    <div class="background">
-      <div class="window">
-        <div class="popup">
-          <h2 style="text-align:center;">만들기</h2>
-          <table>
-            <tr>
-              <td>
-                아이콘
-              </td>
-              <td>
-                게시물 등록
-              </td>
-            </tr>
-            <tr>
-              <td>
-                이미지
-              </td>
-              <td>
-                스토리
-              </td>
-            </tr>
-          </table>
-          <button id="close" onclick="addContentClose();">닫기</button>
+        <div class="background">
+          <div class="window">
+            <div class="popup">
+              <h2 style="text-align:center;">만들기</h2>
+              <table>
+                <tr>
+                  <td>
+                    아이콘
+                  </td>
+                  <td>
+                    <label onclick="changeMainPage('/board/registerForm');">게시물 등록</label>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    이미지
+                  </td>
+                  <td>
+                    스토리
+                  </td>
+                </tr>
+              </table>
+              <button id="close" onclick="addContentClose();">닫기</button>
+            </div>
+          <div>
         </div>
-      <div>
+      </div>
     </div>
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <!--<script th:src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>-->
-    <script th:src="@{/static/dist/js/bootstrap.min.js}"></script>
-    <script th:src="@{/static/assets/js/docs.min.js}"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script th:src="@{/static/assets/js/ie10-viewport-bug-workaround.js}"></script>
   </body>
 </html>
